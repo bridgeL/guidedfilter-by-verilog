@@ -1,0 +1,153 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "oDVAL",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[7]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[8]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[9]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[10]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[11]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[12]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[13]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[14]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[15]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[16]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[17]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[18]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[19]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[20]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[21]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[22]",
+					"strict" : false
+				},
+				{
+					"name" : "oDATA[23]",
+					"strict" : false
+				},
+				{
+					"name" : "iCLK",
+					"strict" : false
+				},
+				{
+					"name" : "iRST_N",
+					"strict" : false
+				},
+				{
+					"name" : "iDVAL",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "iDATA[7]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

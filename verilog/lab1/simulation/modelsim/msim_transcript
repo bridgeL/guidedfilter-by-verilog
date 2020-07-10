@@ -1,0 +1,179 @@
+# Reading F:/intelFPGA/17.0/modelsim_ase/tcl/vsim/pref.tcl
+# do face_blur_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying F:/intelFPGA/17.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/read_data.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:57 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/read_data.v 
+# -- Compiling module read_data
+# 
+# Top level modules:
+# 	read_data
+# End time: 19:02:57 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/output_jpg.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:57 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/output_jpg.v 
+# -- Compiling module output_jpg
+# 
+# Top level modules:
+# 	output_jpg
+# End time: 19:02:57 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/face_blur.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:57 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/face_blur.v 
+# -- Compiling module face_blur
+# 
+# Top level modules:
+# 	face_blur
+# End time: 19:02:57 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/ram1.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:57 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/ram1.v 
+# -- Compiling module ram1
+# 
+# Top level modules:
+# 	ram1
+# End time: 19:02:57 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/ram2.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:58 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/ram2.v 
+# -- Compiling module ram2
+# 
+# Top level modules:
+# 	ram2
+# End time: 19:02:58 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/data_ctrl.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:58 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/data_ctrl.v 
+# -- Compiling module flow_ctrl
+# -- Compiling module data_ctrl
+# 
+# Top level modules:
+# 	data_ctrl
+# End time: 19:02:58 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/blur.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:58 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/blur.v 
+# -- Compiling module blur
+# 
+# Top level modules:
+# 	blur
+# End time: 19:02:58 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/covAB.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:58 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/covAB.v 
+# -- Compiling module covAB
+# 
+# Top level modules:
+# 	covAB
+# End time: 19:02:58 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/calcu_a.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:58 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/calcu_a.v 
+# -- Compiling module calcu_a
+# 
+# Top level modules:
+# 	calcu_a
+# End time: 19:02:58 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/calcu_b.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:58 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/calcu_b.v 
+# -- Compiling module calcu_b
+# 
+# Top level modules:
+# 	calcu_b
+# End time: 19:02:59 on Jul 10,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/result.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:59 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/result.v 
+# -- Compiling module result
+# 
+# Top level modules:
+# 	result
+# End time: 19:02:59 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1 {F:/intelFPGA/signal2/face_blur/verilog/lab1/face_TB.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:02:59 on Jul 10,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab1" F:/intelFPGA/signal2/face_blur/verilog/lab1/face_TB.v 
+# -- Compiling module face_TB
+# 
+# Top level modules:
+# 	face_TB
+# End time: 19:02:59 on Jul 10,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  face_TB
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" face_TB 
+# Start time: 19:02:59 on Jul 10,2020
+# Loading work.face_TB
+# Loading work.face_blur
+# Loading work.data_ctrl
+# Loading work.flow_ctrl
+# Loading work.read_data
+# Loading work.blur
+# Loading work.covAB
+# Loading work.calcu_a
+# Loading work.calcu_b
+# Loading work.result
+# Loading work.output_jpg
+# Loading work.ram2
+# Loading work.ram1
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.altsyncram_body
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 0 sec
+run -all
+# 0x00: 13
+# ** Note: $stop    : F:/intelFPGA/signal2/face_blur/verilog/lab1/face_TB.v(92)
+#    Time: 33720460 ns  Iteration: 0  Instance: /face_TB
+# Break in Module face_TB at F:/intelFPGA/signal2/face_blur/verilog/lab1/face_TB.v line 92
+add wave -position insertpoint  \
+sim:/face_TB/face_blur_inst/iData1 \
+sim:/face_TB/face_blur_inst/iData2 \
+sim:/face_TB/face_blur_inst/iData3 \
+sim:/face_TB/face_blur_inst/iData4 \
+sim:/face_TB/face_blur_inst/oData1 \
+sim:/face_TB/face_blur_inst/oData2 \
+sim:/face_TB/face_blur_inst/oData3 \
+sim:/face_TB/face_blur_inst/oData4
+restart -f
+# End time: 19:22:27 on Jul 10,2020, Elapsed time: 0:19:28
+# Errors: 0, Warnings: 0
