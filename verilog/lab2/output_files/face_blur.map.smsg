@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at face_TB.v(37): always construct contains both blocking and non-blocking assignments File: F:/intelFPGA/signal2/face_blur/verilog/lab2/face_TB.v Line: 37

@@ -1,0 +1,14 @@
+Fitter Status : Failed - Sat Jul 11 01:05:38 2020
+Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Standard Edition
+Revision Name : face_blur
+Top-level Entity Name : face_blur
+Family : Cyclone IV E
+Total logic elements : 3,458
+    Total combinational functions : 3,446
+    Dedicated logic registers : 560
+Total registers : 560
+Total pins : 60
+Total virtual pins : 0
+Total memory bits : 6,291,456
+Embedded Multiplier 9-bit elements : 19
+Total PLLs : 0
