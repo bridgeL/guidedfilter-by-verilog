@@ -58,22 +58,14 @@ module data_ctrl
 );
 
 wire [3:0] STATUS;
-wire s0,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10;
-assign s0 = (STATUS==0) ? 1 : 0;
-assign s1 = (STATUS==1) ? 1 : 0;
-assign s2 = (STATUS==2) ? 1 : 0;
-assign s3 = (STATUS==3) ? 1 : 0;
-assign s4 = (STATUS==4) ? 1 : 0;
-assign s5 = (STATUS==5) ? 1 : 0;
-assign s6 = (STATUS==6) ? 1 : 0;
-assign s7 = (STATUS==7) ? 1 : 0;
-assign s8 = (STATUS==8) ? 1 : 0;
-assign s9 = (STATUS==9) ? 1 : 0;
-assign s10 = (STATUS==10) ? 1 : 0;
-
-
 wire [15:0] ena;
 wire [15:0] done;
+wire [15:0] _done;
+assign done[2] = _done[2];
+assign done[3] = _done[3];
+assign done[7] = _done[7];
+assign done[8] = _done[8];
+
 assign done[0] = iDVAL;
 
 flow_ctrl flow_ctrl_inst
@@ -125,22 +117,22 @@ wire [15:0] br_iAddrB;
 wire [23:0] br_iDataA;
 wire [23:0] br_iDataB;
 
-assign br_ena = s2 ? ena[1] :
-                s3 ? ena[2] : 
-                s7 ? ena[6] :
-                s8 ? ena[7] : 0;
-assign done[2] = s2 ? br_done : 0;
-assign done[3] = s3 ? br_done : 0;
-assign done[7] = s7 ? br_done : 0;
-assign done[8] = s8 ? br_done : 0;
-assign br_oDataA = s2 ? oData1 :
-                   s3 ? oData2 : 
-                   s7 ? oData2 :
-                   s8 ? oData4 : 0;
-assign br_oDataB = s2 ? oData4 :
-                   s3 ? oData4 : 
-                   s7 ? oData1 :
-                   s8 ? oData1 : 0;
+//assign br_ena = s2 ? ena[1] :
+//                s3 ? ena[2] : 
+//                s7 ? ena[6] :
+//                s8 ? ena[7] : 0;
+//assign done[2] = s2 ? br_done : 0;
+//assign done[3] = s3 ? br_done : 0;
+//assign done[7] = s7 ? br_done : 0;
+//assign done[8] = s8 ? br_done : 0;
+//assign br_oDataA = s2 ? oData1 :
+//                   s3 ? oData2 : 
+//                   s7 ? oData2 :
+//                   s8 ? oData4 : 0;
+//assign br_oDataB = s2 ? oData4 :
+//                   s3 ? oData4 : 
+//                   s7 ? oData1 :
+//                   s8 ? oData1 : 0;
 
 blur b0
 (
@@ -280,39 +272,116 @@ output_jpg output_jpg_inst
 	.iAddrA(f10_iAddr1) 	// output [15:0] iAddrA
 );
 
-assign oDVAL = s10 ? f10_oDVAL : 0;
-assign oDATA = s10 ? f10_oDATA : 0;
+wire_switch wire_switch_inst
+(
+	.STATUS(STATUS) ,	// input [3:0] STATUS
+	.ena(ena) ,	// input [15:0] ena
+	._done(_done) ,	// output [15:0] done
+	.wren1(wren1) ,	// output  wren1
+	.wren2(wren2) ,	// output  wren2
+	.wren3(wren3) ,	// output  wren3
+	.wren4(wren4) ,	// output  wren4
+	.iAddr1(iAddr1) ,	// output [15:0] iAddr1
+	.iAddr2(iAddr2) ,	// output [15:0] iAddr2
+	.iAddr3(iAddr3) ,	// output [15:0] iAddr3
+	.iAddr4(iAddr4) ,	// output [15:0] iAddr4
+	.iData1(iData1) ,	// output [23:0] iData1
+	.iData2(iData2) ,	// output [23:0] iData2
+	.iData3(iData3) ,	// output [23:0] iData3
+	.iData4(iData4) ,	// output [23:0] iData4
+	.oData1(oData1) ,	// input [23:0] oData1
+	.oData2(oData2) ,	// input [23:0] oData2
+	.oData3(oData3) ,	// input [23:0] oData3
+	.oData4(oData4) ,	// input [23:0] oData4
+	.oDVAL(oDVAL) ,	// output  oDVAL
+	.oDATA(oDATA) ,	// output [23:0] oDATA
+	.f1_wren1(f1_wren1) ,	// input  f1_wren1
+	.f1_wren2(f1_wren2) ,	// input  f1_wren2
+	.f1_wren3(f1_wren3) ,	// input  f1_wren3
+	.f1_iAddr1(f1_iAddr1) ,	// input [15:0] f1_iAddr1
+	.f1_iAddr2(f1_iAddr2) ,	// input [15:0] f1_iAddr2
+	.f1_iAddr3(f1_iAddr3) ,	// input [15:0] f1_iAddr3
+	.f1_iData1(f1_iData1) ,	// input [23:0] f1_iData1
+	.f1_iData2(f1_iData2) ,	// input [23:0] f1_iData2
+	.f1_iData3(f1_iData3) ,	// input [23:0] f1_iData3
+	.br_ena(br_ena) ,	// output  br_ena
+	.br_done(br_done) ,	// input  br_done
+	.br_oDataA(br_oDataA) ,	// output [23:0] br_oDataA
+	.br_oDataB(br_oDataB) ,	// output [23:0] br_oDataB
+	.br_wrenA(br_wrenA) ,	// input  br_wrenA
+	.br_wrenB(br_wrenB) ,	// input  br_wrenB
+	.br_iAddrA(br_iAddrA) ,	// input [15:0] br_iAddrA
+	.br_iAddrB(br_iAddrB) ,	// input [15:0] br_iAddrB
+	.br_iDataA(br_iDataA) ,	// input [23:0] br_iDataA
+	.br_iDataB(br_iDataB) ,	// input [23:0] br_iDataB
+	.f4_wren1(f4_wren1) ,	// input  f4_wren1
+	.f4_wren2(f4_wren2) ,	// input  f4_wren2
+	.f4_wren4(f4_wren4) ,	// input  f4_wren4
+	.f4_iAddr1(f4_iAddr1) ,	// input [15:0] f4_iAddr1
+	.f4_iAddr2(f4_iAddr2) ,	// input [15:0] f4_iAddr2
+	.f4_iAddr4(f4_iAddr4) ,	// input [15:0] f4_iAddr4
+	.f4_iData4(f4_iData4) ,	// input [23:0] f4_iData4
+	.f5_wren2(f5_wren2) ,	// input  f5_wren2
+	.f5_wren4(f5_wren4) ,	// input  f5_wren4
+	.f5_iAddr4(f5_iAddr4) ,	// input [15:0] f5_iAddr4
+	.f5_iAddr2(f5_iAddr2) ,	// input [15:0] f5_iAddr2
+	.f5_iData2(f5_iData2) ,	// input [23:0] f5_iData2
+	.f6_wren1(f6_wren1) ,	// input  f6_wren1
+	.f6_wren2(f6_wren2) ,	// input  f6_wren2
+	.f6_wren4(f6_wren4) ,	// input  f6_wren4
+	.f6_iAddr1(f6_iAddr1) ,	// input [15:0] f6_iAddr1
+	.f6_iAddr2(f6_iAddr2) ,	// input [15:0] f6_iAddr2
+	.f6_iAddr4(f6_iAddr4) ,	// input [15:0] f6_iAddr4
+	.f6_iData4(f6_iData4) ,	// input [23:0] f6_iData4
+	.f9_wren1(f9_wren1) ,	// input  f9_wren1
+	.f9_wren2(f9_wren2) ,	// input  f9_wren2
+	.f9_wren3(f9_wren3) ,	// input  f9_wren3
+	.f9_wren4(f9_wren4) ,	// input  f9_wren4
+	.f9_iAddr1(f9_iAddr1) ,	// input [15:0] f9_iAddr1
+	.f9_iAddr2(f9_iAddr2) ,	// input [15:0] f9_iAddr2
+	.f9_iAddr3(f9_iAddr3) ,	// input [15:0] f9_iAddr3
+	.f9_iAddr4(f9_iAddr4) ,	// input [15:0] f9_iAddr4
+	.f9_iData1(f9_iData1) ,	// input [23:0] f9_iData1
+	.f10_oDVAL(f10_oDVAL) ,	// input  f10_oDVAL
+	.f10_oDATA(f10_oDATA) ,	// input [23:0] f10_oDATA
+	.f10_wren1(f10_wren1) ,	// input  f10_wren1
+	.f10_iAddr1(f10_iAddr1) 	// input [15:0] f10_iAddr1
+);
 
-assign {wren1,wren2,wren3,wren4}  = s1 ? {f1_wren1, f1_wren2, f1_wren3, 1'b0    } :  
-                                    s2 ? {br_wrenA,     1'b0,     1'b0, br_wrenB} : 
-                                    s3 ? {    1'b0, br_wrenA,     1'b0, br_wrenB} : 
-                                    s4 ? {f4_wren1, f4_wren2,     1'b0, f4_wren4} : 
-                                    s5 ? {    1'b0, f5_wren2,     1'b0, f5_wren4} : 
-                                    s6 ? {f6_wren1, f6_wren2,     1'b0, f6_wren4} : 
-                                    s7 ? {br_wrenB, br_wrenA,     1'b0,     1'b0} : 
-                                    s8 ? {br_wrenB,     1'b0,     1'b0, br_wrenA} : 
-                                    s9 ? {f9_wren1, f9_wren2, f9_wren3, f9_wren4} : 
-                                    s10 ? {f10_wren1,    1'b0,     1'b0,     1'b0} : 4'b0;
 
-assign {iAddr1,iAddr2,iAddr3,iAddr4} = s1 ? {f1_iAddr1, f1_iAddr2, f1_iAddr3,     16'b0} :   
-                                       s2 ? {br_iAddrA,     16'b0,     16'b0, br_iAddrB} : 
-                                       s3 ? {    16'b0, br_iAddrA,     16'b0, br_iAddrB} : 
-                                       s4 ? {f4_iAddr1, f4_iAddr2,     16'b0, f4_iAddr4} : 
-                                       s5 ? {    16'b0, f5_iAddr2,     16'b0, f5_iAddr4} : 
-                                       s6 ? {f6_iAddr1, f6_iAddr2,     16'b0, f6_iAddr4} : 
-                                       s7 ? {br_iAddrB, br_iAddrA,     16'b0,     16'b0} : 
-                                       s8 ? {br_iAddrB,     16'b0,     16'b0, br_iAddrA} : 
-                                       s9 ? {f9_iAddr1, f9_iAddr2, f9_iAddr3, f9_iAddr4} : 
-                                       s10 ? {f10_iAddr1,    16'b0,     16'b0,     16'b0} : 64'b0;
-                                        
-assign {iData1,iData2,iData3,iData4} = s1 ? {f1_iData1, f1_iData2, f1_iData3,     24'b0} :
-                                       s2 ? {br_iDataA,     24'b0,     24'b0, br_iDataB} : 
-                                       s3 ? {    24'b0, br_iDataA,     24'b0, br_iDataB} : 
-                                       s4 ? {    24'b0,     24'b0,     24'b0, f4_iData4} : 
-                                       s5 ? {    24'b0, f5_iData2,     24'b0,     24'b0} :
-                                       s6 ? {    24'b0,     24'b0,     24'b0, f6_iData4} : 
-                                       s7 ? {br_iDataB, br_iDataA,     24'b0,     24'b0} : 
-                                       s8 ? {br_iDataB,     24'b0,     24'b0, br_iDataA} : 
-                                       s9 ? {f9_iData1,     24'b0,     24'b0,     24'b0} : 96'b0;
+//assign oDVAL = s10 ? f10_oDVAL : 0;
+//assign oDATA = s10 ? f10_oDATA : 0;
+//
+//assign {wren1,wren2,wren3,wren4}  = s1 ? {f1_wren1, f1_wren2, f1_wren3, 1'b0    } :  
+//                                    s2 ? {br_wrenA,     1'b0,     1'b0, br_wrenB} : 
+//                                    s3 ? {    1'b0, br_wrenA,     1'b0, br_wrenB} : 
+//                                    s4 ? {f4_wren1, f4_wren2,     1'b0, f4_wren4} : 
+//                                    s5 ? {    1'b0, f5_wren2,     1'b0, f5_wren4} : 
+//                                    s6 ? {f6_wren1, f6_wren2,     1'b0, f6_wren4} : 
+//                                    s7 ? {br_wrenB, br_wrenA,     1'b0,     1'b0} : 
+//                                    s8 ? {br_wrenB,     1'b0,     1'b0, br_wrenA} : 
+//                                    s9 ? {f9_wren1, f9_wren2, f9_wren3, f9_wren4} : 
+//                                    s10 ? {f10_wren1,    1'b0,     1'b0,     1'b0} : 4'b0;
+//
+//assign {iAddr1,iAddr2,iAddr3,iAddr4} = s1 ? {f1_iAddr1, f1_iAddr2, f1_iAddr3,     16'b0} :   
+//                                       s2 ? {br_iAddrA,     16'b0,     16'b0, br_iAddrB} : 
+//                                       s3 ? {    16'b0, br_iAddrA,     16'b0, br_iAddrB} : 
+//                                       s4 ? {f4_iAddr1, f4_iAddr2,     16'b0, f4_iAddr4} : 
+//                                       s5 ? {    16'b0, f5_iAddr2,     16'b0, f5_iAddr4} : 
+//                                       s6 ? {f6_iAddr1, f6_iAddr2,     16'b0, f6_iAddr4} : 
+//                                       s7 ? {br_iAddrB, br_iAddrA,     16'b0,     16'b0} : 
+//                                       s8 ? {br_iAddrB,     16'b0,     16'b0, br_iAddrA} : 
+//                                       s9 ? {f9_iAddr1, f9_iAddr2, f9_iAddr3, f9_iAddr4} : 
+//                                       s10 ? {f10_iAddr1,    16'b0,     16'b0,     16'b0} : 64'b0;
+//                                        
+//assign {iData1,iData2,iData3,iData4} = s1 ? {f1_iData1, f1_iData2, f1_iData3,     24'b0} :
+//                                       s2 ? {br_iDataA,     24'b0,     24'b0, br_iDataB} : 
+//                                       s3 ? {    24'b0, br_iDataA,     24'b0, br_iDataB} : 
+//                                       s4 ? {    24'b0,     24'b0,     24'b0, f4_iData4} : 
+//                                       s5 ? {    24'b0, f5_iData2,     24'b0,     24'b0} :
+//                                       s6 ? {    24'b0,     24'b0,     24'b0, f6_iData4} : 
+//                                       s7 ? {br_iDataB, br_iDataA,     24'b0,     24'b0} : 
+//                                       s8 ? {br_iDataB,     24'b0,     24'b0, br_iDataA} : 
+//                                       s9 ? {f9_iData1,     24'b0,     24'b0,     24'b0} : 96'b0;
                                      
 endmodule 

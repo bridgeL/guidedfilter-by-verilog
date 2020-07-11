@@ -57,7 +57,7 @@ assign wrenB  = s1 ? 1 :
 assign iDataA = s2 ? sum[27:4] : 0;
 assign iDataB = s1 ? sum[27:4] : 0;
 assign iAddrA = s1 ? iAddr :
-                s2 ? iAddr - 8 : 0;
+                s2 ? iAddr - 8*210 : 0;
 assign iAddrB = s1 ? iAddr - 8 :
                 s2 ? iAddr : 0;
 

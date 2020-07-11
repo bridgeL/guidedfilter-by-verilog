@@ -105,7 +105,7 @@ face_blur face_blur_inst
 	.oDVAL(oDVAL) ,	// output  oDVAL_sig
 	.iDATA(iDATA) ,	// input [7:0] iDATA_sig
 	.oDATA(oDATA), 	// output [7:0] oDATA_sig
-    .eps(200)   // 美颜力度
+    .eps(800)   // 美颜力度
 );
 
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for face_blur
-Sat Jul 11 01:41:12 2020
+Sat Jul 11 10:52:30 2020
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
 
 
@@ -42,7 +42,7 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
  34. Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0
  35. altsyncram Parameter Settings by Entity Instance
  36. lpm_mult Parameter Settings by Entity Instance
- 37. Port Connectivity Checks: "data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst"
+ 37. Port Connectivity Checks: "data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst"
  38. Post-Synthesis Netlist Statistics for Top Partition
  39. Elapsed Time Per Partition
  40. Analysis & Synthesis Messages
@@ -73,13 +73,13 @@ agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jul 11 01:41:12 2020           ;
+; Analysis & Synthesis Status        ; Successful - Sat Jul 11 10:52:29 2020           ;
 ; Quartus Prime Version              ; 17.0.0 Build 595 04/25/2017 SJ Standard Edition ;
 ; Revision Name                      ; face_blur                                       ;
 ; Top-level Entity Name              ; face_blur                                       ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 3,458                                           ;
-;     Total combinational functions  ; 3,446                                           ;
+; Total logic elements               ; 3,468                                           ;
+;     Total combinational functions  ; 3,456                                           ;
 ;     Dedicated logic registers      ; 560                                             ;
 ; Total registers                    ; 560                                             ;
 ; Total pins                         ; 60                                              ;
@@ -95,6 +95,7 @@ agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE55F23C8       ;                    ;
 ; Top-level entity name                                                      ; face_blur          ; face_blur          ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
@@ -207,6 +208,7 @@ agreement for further details.
 ; calcu_a.v                        ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_a.v                     ;         ;
 ; calcu_b.v                        ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v                     ;         ;
 ; result.v                         ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v                      ;         ;
+; wire_switch.v                    ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v                 ;         ;
 ; altsyncram.tdf                   ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/altsyncram.tdf          ;         ;
 ; stratix_ram_block.inc            ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/stratix_ram_block.inc   ;         ;
 ; lpm_mux.inc                      ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/lpm_mux.inc             ;         ;
@@ -260,17 +262,17 @@ agreement for further details.
 +---------------------------------------------+------------+
 ; Resource                                    ; Usage      ;
 +---------------------------------------------+------------+
-; Estimated Total logic elements              ; 3,458      ;
+; Estimated Total logic elements              ; 3,468      ;
 ;                                             ;            ;
-; Total combinational functions               ; 3446       ;
+; Total combinational functions               ; 3456       ;
 ; Logic element usage by number of LUT inputs ;            ;
-;     -- 4 input functions                    ; 1701       ;
-;     -- 3 input functions                    ; 1409       ;
-;     -- <=2 input functions                  ; 336        ;
+;     -- 4 input functions                    ; 1699       ;
+;     -- 3 input functions                    ; 1410       ;
+;     -- <=2 input functions                  ; 347        ;
 ;                                             ;            ;
 ; Logic elements by mode                      ;            ;
-;     -- normal mode                          ; 2303       ;
-;     -- arithmetic mode                      ; 1143       ;
+;     -- normal mode                          ; 2302       ;
+;     -- arithmetic mode                      ; 1154       ;
 ;                                             ;            ;
 ; Total registers                             ; 560        ;
 ;     -- Dedicated logic registers            ; 560        ;
@@ -283,7 +285,7 @@ agreement for further details.
 ;                                             ;            ;
 ; Maximum fan-out node                        ; iCLK~input ;
 ; Maximum fan-out                             ; 1328       ;
-; Total fan-out                               ; 26308      ;
+; Total fan-out                               ; 26324      ;
 ; Average fan-out                             ; 5.35       ;
 +---------------------------------------------+------------+
 
@@ -293,9 +295,9 @@ agreement for further details.
 +------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                           ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                            ; Entity Name         ; Library Name ;
 +------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |face_blur                                           ; 3446 (1)            ; 560 (0)                   ; 6291456     ; 19           ; 1       ; 9         ; 60   ; 0            ; |face_blur                                                                                                                                                                     ; face_blur           ; work         ;
-;    |data_ctrl:data_ctrl_inst|                        ; 2899 (588)          ; 536 (0)                   ; 0           ; 19           ; 1       ; 9         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst                                                                                                                                            ; data_ctrl           ; work         ;
-;       |blur:b0|                                      ; 929 (894)           ; 408 (408)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0                                                                                                                                    ; blur                ; work         ;
+; |face_blur                                           ; 3456 (1)            ; 560 (0)                   ; 6291456     ; 19           ; 1       ; 9         ; 60   ; 0            ; |face_blur                                                                                                                                                                     ; face_blur           ; work         ;
+;    |data_ctrl:data_ctrl_inst|                        ; 2909 (0)            ; 536 (0)                   ; 0           ; 19           ; 1       ; 9         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst                                                                                                                                            ; data_ctrl           ; work         ;
+;       |blur:b0|                                      ; 942 (907)           ; 408 (408)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0                                                                                                                                    ; blur                ; work         ;
 ;          |lpm_mult:Mult0|                            ; 35 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0                                                                                                                     ; lpm_mult            ; work         ;
 ;             |multcore:mult_core|                     ; 35 (17)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core                                                                                                  ; multcore            ; work         ;
 ;                |mpar_add:padder|                     ; 18 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder                                                                                  ; mpar_add            ; work         ;
@@ -316,7 +318,7 @@ agreement for further details.
 ;       |covAB:covAB_inst|                             ; 85 (73)             ; 19 (19)                   ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst                                                                                                                           ; covAB               ; work         ;
 ;          |lpm_mult:Mult0|                            ; 12 (0)              ; 0 (0)                     ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0                                                                                                            ; lpm_mult            ; work         ;
 ;             |mult_bdt:auto_generated|                ; 12 (12)             ; 0 (0)                     ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0|mult_bdt:auto_generated                                                                                    ; mult_bdt            ; work         ;
-;       |flow_ctrl:flow_ctrl_inst|                     ; 57 (57)             ; 14 (14)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst                                                                                                                   ; flow_ctrl           ; work         ;
+;       |flow_ctrl:flow_ctrl_inst|                     ; 58 (58)             ; 14 (14)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst                                                                                                                   ; flow_ctrl           ; work         ;
 ;       |output_jpg:output_jpg_inst|                   ; 25 (25)             ; 19 (19)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst                                                                                                                 ; output_jpg          ; work         ;
 ;       |read_data:read_data_inst|                     ; 26 (26)             ; 19 (19)                   ; 0           ; 1            ; 1       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst                                                                                                                   ; read_data           ; work         ;
 ;          |lpm_mult:Mult0|                            ; 0 (0)               ; 0 (0)                     ; 0           ; 1            ; 1       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst|lpm_mult:Mult0                                                                                                    ; lpm_mult            ; work         ;
@@ -324,6 +326,7 @@ agreement for further details.
 ;       |result:result_inst|                           ; 82 (56)             ; 19 (19)                   ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|result:result_inst                                                                                                                         ; result              ; work         ;
 ;          |lpm_mult:Mult0|                            ; 26 (0)              ; 0 (0)                     ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0                                                                                                          ; lpm_mult            ; work         ;
 ;             |mult_bdt:auto_generated|                ; 26 (26)             ; 0 (0)                     ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0|mult_bdt:auto_generated                                                                                  ; mult_bdt            ; work         ;
+;       |wire_switch:wire_switch_inst|                 ; 584 (584)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst                                                                                                               ; wire_switch         ; work         ;
 ;    |ram1:u1|                                         ; 138 (0)             ; 6 (0)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u1                                                                                                                                                             ; ram1                ; work         ;
 ;       |altsyncram:altsyncram_component|              ; 138 (0)             ; 6 (0)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u1|altsyncram:altsyncram_component                                                                                                                             ; altsyncram          ; work         ;
 ;          |altsyncram_rkf1:auto_generated|            ; 138 (0)             ; 6 (6)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u1|altsyncram:altsyncram_component|altsyncram_rkf1:auto_generated                                                                                              ; altsyncram_rkf1     ; work         ;
@@ -333,8 +336,8 @@ agreement for further details.
 ;    |ram1:u2|                                         ; 136 (0)             ; 6 (0)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2                                                                                                                                                             ; ram1                ; work         ;
 ;       |altsyncram:altsyncram_component|              ; 136 (0)             ; 6 (0)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component                                                                                                                             ; altsyncram          ; work         ;
 ;          |altsyncram_rkf1:auto_generated|            ; 136 (0)             ; 6 (6)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_rkf1:auto_generated                                                                                              ; altsyncram_rkf1     ; work         ;
-;             |decode_k8a:rden_decode|                 ; 8 (8)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_rkf1:auto_generated|decode_k8a:rden_decode                                                                       ; decode_k8a          ; work         ;
-;             |decode_rsa:decode3|                     ; 8 (8)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_rkf1:auto_generated|decode_rsa:decode3                                                                           ; decode_rsa          ; work         ;
+;             |decode_k8a:rden_decode|                 ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_rkf1:auto_generated|decode_k8a:rden_decode                                                                       ; decode_k8a          ; work         ;
+;             |decode_rsa:decode3|                     ; 9 (9)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_rkf1:auto_generated|decode_rsa:decode3                                                                           ; decode_rsa          ; work         ;
 ;             |mux_pob:mux2|                           ; 120 (120)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_rkf1:auto_generated|mux_pob:mux2                                                                                 ; mux_pob             ; work         ;
 ;    |ram1:u3|                                         ; 136 (0)             ; 6 (0)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u3                                                                                                                                                             ; ram1                ; work         ;
 ;       |altsyncram:altsyncram_component|              ; 136 (0)             ; 6 (0)                     ; 1572864     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u3|altsyncram:altsyncram_component                                                                                                                             ; altsyncram          ; work         ;
@@ -526,43 +529,43 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|STATUS[2]    ;
-; 3:1                ; 360 bits  ; 720 LEs       ; 360 LEs              ; 360 LEs                ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|databuf[6][0]                 ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[9]       ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[0]       ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst|iAddrA[15] ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|result:result_inst|iAddr[13]          ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|iAddr[13]        ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|iAddr[10]        ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst|iAddr[12]            ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst|iAddr[15]    ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[4]       ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[2]       ;
-; 10:1               ; 24 bits   ; 144 LEs       ; 48 LEs               ; 96 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|databuf[0][5]                 ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|oDATA[19]                             ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|iAddrA[0]                     ;
-; 3:1                ; 26 bits   ; 52 LEs        ; 52 LEs               ; 0 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|iAddrB[9]                     ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iAddr3[3]                             ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ShiftLeft0   ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iAddr2[0]                             ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iAddr1[2]                             ;
-; 6:1                ; 13 bits   ; 52 LEs        ; 39 LEs               ; 13 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iAddr2[12]                            ;
-; 11:1               ; 9 bits    ; 63 LEs        ; 18 LEs               ; 45 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iData2[20]                            ;
-; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iAddr4[2]                             ;
-; 8:1                ; 13 bits   ; 65 LEs        ; 52 LEs               ; 13 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iAddr1[12]                            ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|STATUS                        ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iData4[1]                             ;
-; 12:1               ; 14 bits   ; 112 LEs       ; 56 LEs               ; 56 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iData2[14]                            ;
-; 9:1                ; 13 bits   ; 78 LEs        ; 52 LEs               ; 26 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iAddr4[14]                            ;
-; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iData1[7]                             ;
-; 7:1                ; 16 bits   ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iData1[22]                            ;
-; 11:1               ; 16 bits   ; 112 LEs       ; 64 LEs               ; 48 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|iData4[20]                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|STATUS[2]      ;
+; 3:1                ; 360 bits  ; 720 LEs       ; 360 LEs              ; 360 LEs                ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|databuf[6][0]                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[9]         ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[0]         ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst|iAddrA[15]   ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|result:result_inst|iAddr[13]            ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|iAddr[13]          ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|iAddr[10]          ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst|iAddr[0]               ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst|iAddr[10]      ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[4]         ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[3]         ;
+; 10:1               ; 24 bits   ; 144 LEs       ; 48 LEs               ; 96 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|databuf[0][13]                  ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|oDATA[6]   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|iAddrA[2]                       ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|iAddrB[5]                       ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr3[5]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ShiftLeft0     ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr2[2]  ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr1[2]  ;
+; 6:1                ; 13 bits   ; 52 LEs        ; 39 LEs               ; 13 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr2[15] ;
+; 11:1               ; 9 bits    ; 63 LEs        ; 18 LEs               ; 45 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData2[16] ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr4[2]  ;
+; 8:1                ; 13 bits   ; 65 LEs        ; 52 LEs               ; 13 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr1[11] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|STATUS                          ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData4[0]  ;
+; 12:1               ; 14 bits   ; 112 LEs       ; 56 LEs               ; 56 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData2[10] ;
+; 9:1                ; 13 bits   ; 78 LEs        ; 52 LEs               ; 26 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr4[3]  ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData1[1]  ;
+; 7:1                ; 16 bits   ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData1[12] ;
+; 11:1               ; 16 bits   ; 112 LEs       ; 64 LEs               ; 48 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData4[22] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------+
@@ -1160,13 +1163,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------+------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst"                                         ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port        ; Type   ; Severity ; Details                                                                             ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; ena[15..10] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst"                                                                                               ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                      ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; _done[15..9] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; _done[6..4]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; _done[1..0]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; iDVAL        ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -1179,22 +1185,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SCLR              ; 124                         ;
 ;     SCLR SLD          ; 24                          ;
 ;     plain             ; 412                         ;
-; cycloneiii_lcell_comb ; 3446                        ;
-;     arith             ; 1143                        ;
-;         2 data inputs ; 150                         ;
+; cycloneiii_lcell_comb ; 3456                        ;
+;     arith             ; 1154                        ;
+;         2 data inputs ; 161                         ;
 ;         3 data inputs ; 993                         ;
-;     normal            ; 2303                        ;
+;     normal            ; 2302                        ;
 ;         0 data inputs ; 46                          ;
-;         1 data inputs ; 12                          ;
-;         2 data inputs ; 128                         ;
-;         3 data inputs ; 416                         ;
-;         4 data inputs ; 1701                        ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 127                         ;
+;         3 data inputs ; 417                         ;
+;         4 data inputs ; 1699                        ;
 ; cycloneiii_mac_mult   ; 10                          ;
 ; cycloneiii_mac_out    ; 10                          ;
 ; cycloneiii_ram_block  ; 768                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 119.30                      ;
-; Average LUT depth     ; 38.51                       ;
+; Average LUT depth     ; 38.41                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1203,7 +1209,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:01:55     ;
+; Top            ; 00:01:57     ;
 +----------------+--------------+
 
 
@@ -1213,7 +1219,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
-    Info: Processing started: Sat Jul 11 01:39:02 2020
+    Info: Processing started: Sat Jul 11 10:50:15 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off face_blur -c face_blur
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -1240,33 +1246,14 @@ Info (12021): Found 1 design units, including 1 entities, in source file calcu_b
     Info (12023): Found entity 1: calcu_b File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file result.v
     Info (12023): Found entity 1: result File: F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file wire_switch.v
+    Info (12023): Found entity 1: wire_switch File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 1
 Info (12127): Elaborating entity "face_blur" for the top level hierarchy
 Info (12128): Elaborating entity "data_ctrl" for hierarchy "data_ctrl:data_ctrl_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/face_blur.v Line: 61
-Warning (10036): Verilog HDL or VHDL warning at data_ctrl.v(61): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 61
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(62): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 62
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(63): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 63
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(64): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 64
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(65): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 65
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(66): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 66
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(67): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 67
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(68): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 68
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(69): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 69
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(70): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 70
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(71): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 71
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(72): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 72
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(128): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 128
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(132): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 132
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(133): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 133
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(134): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 134
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(135): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 135
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(136): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 136
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(140): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 140
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(283): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 283
-Warning (10230): Verilog HDL assignment warning at data_ctrl.v(284): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 284
-Info (12128): Elaborating entity "flow_ctrl" for hierarchy "data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 86
+Info (12128): Elaborating entity "flow_ctrl" for hierarchy "data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 78
 Warning (10230): Verilog HDL assignment warning at data_ctrl.v(17): truncated value with size 32 to match size of target (4) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 17
 Warning (10230): Verilog HDL assignment warning at data_ctrl.v(18): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 18
-Info (12128): Elaborating entity "read_data" for hierarchy "data_ctrl:data_ctrl_inst|read_data:read_data_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 115
+Info (12128): Elaborating entity "read_data" for hierarchy "data_ctrl:data_ctrl_inst|read_data:read_data_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 107
 Warning (10036): Verilog HDL or VHDL warning at read_data.v(26): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/read_data.v Line: 26
 Warning (10036): Verilog HDL or VHDL warning at read_data.v(26): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/read_data.v Line: 26
 Warning (10230): Verilog HDL assignment warning at read_data.v(27): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/read_data.v Line: 27
@@ -1282,27 +1269,27 @@ Warning (10230): Verilog HDL assignment warning at read_data.v(48): truncated va
 Warning (10230): Verilog HDL assignment warning at read_data.v(49): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/read_data.v Line: 49
 Warning (10230): Verilog HDL assignment warning at read_data.v(61): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/read_data.v Line: 61
 Info (10264): Verilog HDL Case Statement information at read_data.v(75): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab2/read_data.v Line: 75
-Info (12128): Elaborating entity "blur" for hierarchy "data_ctrl:data_ctrl_inst|blur:b0" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 159
+Info (12128): Elaborating entity "blur" for hierarchy "data_ctrl:data_ctrl_inst|blur:b0" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 151
 Warning (10036): Verilog HDL or VHDL warning at blur.v(22): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 22
 Warning (10230): Verilog HDL assignment warning at blur.v(23): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 23
 Warning (10230): Verilog HDL assignment warning at blur.v(24): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 24
 Warning (10230): Verilog HDL assignment warning at blur.v(25): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 25
 Warning (10230): Verilog HDL assignment warning at blur.v(26): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 26
 Warning (10230): Verilog HDL assignment warning at blur.v(33): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 33
-Warning (10230): Verilog HDL assignment warning at blur.v(67): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 67
-Warning (10230): Verilog HDL assignment warning at blur.v(68): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 68
-Warning (10230): Verilog HDL assignment warning at blur.v(70): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 70
-Warning (10230): Verilog HDL assignment warning at blur.v(72): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 72
-Warning (10230): Verilog HDL assignment warning at blur.v(74): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 74
-Warning (10230): Verilog HDL assignment warning at blur.v(75): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 75
-Warning (10230): Verilog HDL assignment warning at blur.v(76): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 76
-Warning (10230): Verilog HDL assignment warning at blur.v(78): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 78
+Warning (10230): Verilog HDL assignment warning at blur.v(50): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 50
+Warning (10230): Verilog HDL assignment warning at blur.v(51): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 51
+Warning (10230): Verilog HDL assignment warning at blur.v(53): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 53
+Warning (10230): Verilog HDL assignment warning at blur.v(55): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 55
+Warning (10230): Verilog HDL assignment warning at blur.v(57): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 57
+Warning (10230): Verilog HDL assignment warning at blur.v(58): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 58
+Warning (10230): Verilog HDL assignment warning at blur.v(59): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 59
+Warning (10230): Verilog HDL assignment warning at blur.v(61): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 61
+Warning (10230): Verilog HDL assignment warning at blur.v(93): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 93
+Warning (10230): Verilog HDL assignment warning at blur.v(96): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 96
+Warning (10230): Verilog HDL assignment warning at blur.v(107): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 107
 Warning (10230): Verilog HDL assignment warning at blur.v(110): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 110
-Warning (10230): Verilog HDL assignment warning at blur.v(113): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 113
-Warning (10230): Verilog HDL assignment warning at blur.v(124): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 124
-Warning (10230): Verilog HDL assignment warning at blur.v(127): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 127
-Info (10264): Verilog HDL Case Statement information at blur.v(107): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 107
-Info (12128): Elaborating entity "covAB" for hierarchy "data_ctrl:data_ctrl_inst|covAB:covAB_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 185
+Info (10264): Verilog HDL Case Statement information at blur.v(90): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v Line: 90
+Info (12128): Elaborating entity "covAB" for hierarchy "data_ctrl:data_ctrl_inst|covAB:covAB_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 177
 Warning (10036): Verilog HDL or VHDL warning at covAB.v(24): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/covAB.v Line: 24
 Warning (10036): Verilog HDL or VHDL warning at covAB.v(24): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/covAB.v Line: 24
 Warning (10230): Verilog HDL assignment warning at covAB.v(25): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/covAB.v Line: 25
@@ -1314,7 +1301,7 @@ Warning (10230): Verilog HDL assignment warning at covAB.v(38): truncated value 
 Warning (10230): Verilog HDL assignment warning at covAB.v(39): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/covAB.v Line: 39
 Warning (10230): Verilog HDL assignment warning at covAB.v(51): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/covAB.v Line: 51
 Info (10264): Verilog HDL Case Statement information at covAB.v(65): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab2/covAB.v Line: 65
-Info (12128): Elaborating entity "calcu_a" for hierarchy "data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 207
+Info (12128): Elaborating entity "calcu_a" for hierarchy "data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 199
 Warning (10036): Verilog HDL or VHDL warning at calcu_a.v(22): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_a.v Line: 22
 Warning (10036): Verilog HDL or VHDL warning at calcu_a.v(22): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_a.v Line: 22
 Warning (10230): Verilog HDL assignment warning at calcu_a.v(23): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_a.v Line: 23
@@ -1326,7 +1313,7 @@ Warning (10230): Verilog HDL assignment warning at calcu_a.v(34): truncated valu
 Warning (10230): Verilog HDL assignment warning at calcu_a.v(35): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_a.v Line: 35
 Warning (10230): Verilog HDL assignment warning at calcu_a.v(47): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_a.v Line: 47
 Info (10264): Verilog HDL Case Statement information at calcu_a.v(61): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_a.v Line: 61
-Info (12128): Elaborating entity "calcu_b" for hierarchy "data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 233
+Info (12128): Elaborating entity "calcu_b" for hierarchy "data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 225
 Warning (10036): Verilog HDL or VHDL warning at calcu_b.v(24): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v Line: 24
 Warning (10036): Verilog HDL or VHDL warning at calcu_b.v(24): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v Line: 24
 Warning (10230): Verilog HDL assignment warning at calcu_b.v(25): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v Line: 25
@@ -1338,7 +1325,7 @@ Warning (10230): Verilog HDL assignment warning at calcu_b.v(38): truncated valu
 Warning (10230): Verilog HDL assignment warning at calcu_b.v(39): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v Line: 39
 Warning (10230): Verilog HDL assignment warning at calcu_b.v(51): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v Line: 51
 Info (10264): Verilog HDL Case Statement information at calcu_b.v(65): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v Line: 65
-Info (12128): Elaborating entity "result" for hierarchy "data_ctrl:data_ctrl_inst|result:result_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 263
+Info (12128): Elaborating entity "result" for hierarchy "data_ctrl:data_ctrl_inst|result:result_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 255
 Warning (10036): Verilog HDL or VHDL warning at result.v(27): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v Line: 27
 Warning (10036): Verilog HDL or VHDL warning at result.v(27): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v Line: 27
 Warning (10230): Verilog HDL assignment warning at result.v(28): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v Line: 28
@@ -1350,7 +1337,7 @@ Warning (10230): Verilog HDL assignment warning at result.v(43): truncated value
 Warning (10230): Verilog HDL assignment warning at result.v(44): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v Line: 44
 Warning (10230): Verilog HDL assignment warning at result.v(56): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v Line: 56
 Info (10264): Verilog HDL Case Statement information at result.v(70): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v Line: 70
-Info (12128): Elaborating entity "output_jpg" for hierarchy "data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 281
+Info (12128): Elaborating entity "output_jpg" for hierarchy "data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 273
 Warning (10036): Verilog HDL or VHDL warning at output_jpg.v(22): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/output_jpg.v Line: 22
 Warning (10230): Verilog HDL assignment warning at output_jpg.v(23): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/output_jpg.v Line: 23
 Warning (10230): Verilog HDL assignment warning at output_jpg.v(24): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/output_jpg.v Line: 24
@@ -1359,6 +1346,31 @@ Warning (10230): Verilog HDL assignment warning at output_jpg.v(27): truncated v
 Warning (10230): Verilog HDL assignment warning at output_jpg.v(28): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/output_jpg.v Line: 28
 Warning (10230): Verilog HDL assignment warning at output_jpg.v(29): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/output_jpg.v Line: 29
 Warning (10230): Verilog HDL assignment warning at output_jpg.v(41): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/output_jpg.v Line: 41
+Info (12128): Elaborating entity "wire_switch" for hierarchy "data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v Line: 349
+Warning (10036): Verilog HDL or VHDL warning at wire_switch.v(90): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 90
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(92): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 92
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(93): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 93
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(94): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 94
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(95): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 95
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(96): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 96
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(97): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 97
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(98): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 98
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(99): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 99
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(100): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 100
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(101): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 101
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(102): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 102
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(104): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 104
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(108): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 108
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(109): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 109
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(110): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 110
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(111): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 111
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(112): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 112
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(116): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 116
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(121): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 121
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(122): truncated value with size 32 to match size of target (24) File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 122
+Warning (10034): Output port "_done[15..9]" at wire_switch.v(5) has no driver File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 5
+Warning (10034): Output port "_done[6..4]" at wire_switch.v(5) has no driver File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 5
+Warning (10034): Output port "_done[1..0]" at wire_switch.v(5) has no driver File: F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v Line: 5
 Info (12128): Elaborating entity "ram1" for hierarchy "ram1:u1" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/face_blur.v Line: 70
 Info (12128): Elaborating entity "altsyncram" for hierarchy "ram1:u1|altsyncram:altsyncram_component" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/ram1.v Line: 86
 Info (12130): Elaborated megafunction instantiation "ram1:u1|altsyncram:altsyncram_component" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/ram1.v Line: 86
@@ -1489,6 +1501,7 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|lpm_mult:Mult0|mult_bdt:auto_generated|mac_out8" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/db/mult_bdt.tdf Line: 91
         Warning (14320): Synthesized away node "data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0|mult_bdt:auto_generated|mac_mult7" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/db/mult_bdt.tdf Line: 67
         Warning (14320): Synthesized away node "data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0|mult_bdt:auto_generated|mac_out8" File: F:/intelFPGA/signal2/face_blur/verilog/lab2/db/mult_bdt.tdf Line: 91
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13014): Ignored 150 buffer(s)
     Info (13019): Ignored 150 SOFT buffer(s)
 Info (286030): Timing-Driven Synthesis is running
@@ -1496,17 +1509,17 @@ Info (17049): 18 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file F:/intelFPGA/signal2/face_blur/verilog/lab2/output_files/face_blur.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 4317 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 4327 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 35 input pins
     Info (21059): Implemented 25 output pins
-    Info (21061): Implemented 3470 logic cells
+    Info (21061): Implemented 3480 logic cells
     Info (21064): Implemented 768 RAM segments
     Info (21062): Implemented 19 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 112 warnings
-    Info: Peak virtual memory: 4796 megabytes
-    Info: Processing ended: Sat Jul 11 01:41:12 2020
-    Info: Elapsed time: 00:02:10
-    Info: Total CPU time (on all processors): 00:02:23
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 116 warnings
+    Info: Peak virtual memory: 4808 megabytes
+    Info: Processing ended: Sat Jul 11 10:52:30 2020
+    Info: Elapsed time: 00:02:15
+    Info: Total CPU time (on all processors): 00:02:30
 
 
 +------------------------------------------+

@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 dF:/intelFPGA/signal2/face_blur/verilog/lab2/simulation/modelsim
 vblur
-Z1 !s110 1594402910
+Z1 !s110 1594436461
 !i10b 1
-!s100 DKcZK0dYcJRGf8Fca^5`o2
-I[e@cALJhQFO@;4_OJCGUe2
+!s100 fBK5G1PTOAD;<AR`nXiWM2
+I]O5@k[LoWUPfRh5<cFhG<1
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1594402734
+w1594430781
 8F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v
 FF:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v
 L0 1
@@ -23,7 +23,7 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1594402910.000000
+Z4 !s108 1594436460.000000
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/blur.v|
 !i113 1
@@ -45,7 +45,7 @@ R3
 r1
 !s85 0
 31
-R4
+Z8 !s108 1594436461.000000
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_a.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_a.v|
 !i113 1
@@ -67,7 +67,7 @@ R3
 r1
 !s85 0
 31
-R4
+R8
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/calcu_b.v|
 !i113 1
@@ -89,7 +89,7 @@ R3
 r1
 !s85 0
 31
-R4
+R8
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/covAB.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/covAB.v|
 !i113 1
@@ -98,29 +98,29 @@ R6
 R7
 ncov@a@b
 vdata_ctrl
-R1
+Z9 !s110 1594436460
 !i10b 1
-!s100 za2C]gagnW<l?7lhTY3CI0
-I>5cN9;YeIC0`P:1aEzA`R0
+!s100 EJADXH<Rbd3aDY0RKO>i81
+IXDfXILDOmXh^d]lnalYND1
 R2
 R0
-Z8 w1594402308
-Z9 8F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v
-Z10 FF:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v
+Z10 w1594435525
+Z11 8F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v
+Z12 FF:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v
 L0 29
 R3
 r1
 !s85 0
 31
 R4
-Z11 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v|
-Z12 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v|
+Z13 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v|
+Z14 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/data_ctrl.v|
 !i113 1
 R5
 R6
 R7
 vface_blur
-Z13 !s110 1594402909
+R9
 !i10b 1
 !s100 RFC6bGRA?0V<UQCG=;;R?3
 IX[3W9lQGS]W6NHFzL>c@F1
@@ -134,7 +134,7 @@ R3
 r1
 !s85 0
 31
-Z14 !s108 1594402909.000000
+R4
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/face_blur.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/face_blur.v|
 !i113 1
@@ -142,13 +142,13 @@ R5
 R6
 R7
 vface_TB
-Z15 !s110 1594402911
+R1
 !i10b 1
-!s100 hGEHze4zzRa<2ISPDe5NC0
-Id4>z=NhFcPg6O@U@C0?Ie0
+!s100 7bFJoYBj]ko;]Pgf4@B^O0
+Id<]oaYzez@2M^P1A=97Z91
 R2
 R0
-w1594401845
+w1594436448
 8F:/intelFPGA/signal2/face_blur/verilog/lab2/face_TB.v
 FF:/intelFPGA/signal2/face_blur/verilog/lab2/face_TB.v
 L0 2
@@ -156,7 +156,7 @@ R3
 r1
 !s85 0
 31
-Z16 !s108 1594402911.000000
+R8
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/face_TB.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/face_TB.v|
 !i113 1
@@ -165,29 +165,29 @@ R6
 R7
 nface_@t@b
 vflow_ctrl
-R1
+R9
 !i10b 1
 !s100 ]ZNPcaOO4b6IfDg6T:h2L2
 IOCAlQ5?]OYe22b:zciRcz0
 R2
 R0
-R8
-R9
 R10
+R11
+R12
 L0 1
 R3
 r1
 !s85 0
 31
 R4
-R11
-R12
+R13
+R14
 !i113 1
 R5
 R6
 R7
 voutput_jpg
-R13
+R9
 !i10b 1
 !s100 K1BI4oVH=UBRiL;MInBKd3
 I9jai90=k0B4LW:hH16llO3
@@ -201,7 +201,7 @@ R3
 r1
 !s85 0
 31
-R14
+R4
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/output_jpg.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/output_jpg.v|
 !i113 1
@@ -209,7 +209,7 @@ R5
 R6
 R7
 vram1
-R13
+R9
 !i10b 1
 !s100 J>Pkf][<hf__hVnHNlUU83
 IXcea?P6aLNjfiT15XkHEL2
@@ -223,7 +223,7 @@ R3
 r1
 !s85 0
 31
-R14
+R4
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/ram1.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/ram1.v|
 !i113 1
@@ -231,7 +231,7 @@ R5
 R6
 R7
 vread_data
-R13
+R9
 !i10b 1
 !s100 ]bAhgWfgCWG@;Rnd40C9I2
 IPGlIJI8:`9Dh]i>_BjXPK0
@@ -245,7 +245,7 @@ R3
 r1
 !s85 0
 31
-R14
+!s108 1594436459.000000
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/read_data.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/read_data.v|
 !i113 1
@@ -253,7 +253,7 @@ R5
 R6
 R7
 vresult
-R15
+R1
 !i10b 1
 !s100 _Bol:N>95Fb`UgQgMUoZz2
 I9:@H<@SlZa=67MRBQJO602
@@ -267,9 +267,31 @@ R3
 r1
 !s85 0
 31
-R16
+R8
 !s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/result.v|
+!i113 1
+R5
+R6
+R7
+vwire_switch
+R1
+!i10b 1
+!s100 DH]B9Wf@D4KzdZ[KRmNbH2
+Id]5HB2]75dUSWhWFm>T[b2
+R2
+R0
+w1594435376
+8F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v
+FF:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/intelFPGA/signal2/face_blur/verilog/lab2|F:/intelFPGA/signal2/face_blur/verilog/lab2/wire_switch.v|
 !i113 1
 R5
 R6

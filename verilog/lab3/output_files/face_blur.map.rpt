@@ -1,0 +1,1518 @@
+Analysis & Synthesis report for face_blur
+Sat Jul 11 11:23:52 2020
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis DSP Block Usage Summary
+ 10. Analysis & Synthesis IP Cores Summary
+ 11. State Machine - |face_blur|data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst|STATUS
+ 12. State Machine - |face_blur|data_ctrl:data_ctrl_inst|result:result_inst|STATUS
+ 13. State Machine - |face_blur|data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|STATUS
+ 14. State Machine - |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|STATUS
+ 15. State Machine - |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst|STATUS
+ 16. State Machine - |face_blur|data_ctrl:data_ctrl_inst|blur:b0|STATUS
+ 17. State Machine - |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst|STATUS
+ 18. Registers Removed During Synthesis
+ 19. General Register Statistics
+ 20. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 21. Source assignments for ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated
+ 22. Source assignments for ram1:u2|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated
+ 23. Source assignments for ram1:u3|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated
+ 24. Source assignments for ram1:u4|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated
+ 25. Parameter Settings for User Entity Instance: ram1:u1|altsyncram:altsyncram_component
+ 26. Parameter Settings for User Entity Instance: ram1:u2|altsyncram:altsyncram_component
+ 27. Parameter Settings for User Entity Instance: ram1:u3|altsyncram:altsyncram_component
+ 28. Parameter Settings for User Entity Instance: ram1:u4|altsyncram:altsyncram_component
+ 29. Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0
+ 30. Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0
+ 31. Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|lpm_divide:Div0
+ 32. Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|read_data:read_data_inst|lpm_mult:Mult0
+ 33. Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|lpm_mult:Mult0
+ 34. Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0
+ 35. altsyncram Parameter Settings by Entity Instance
+ 36. lpm_mult Parameter Settings by Entity Instance
+ 37. Port Connectivity Checks: "data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst"
+ 38. Post-Synthesis Netlist Statistics for Top Partition
+ 39. Elapsed Time Per Partition
+ 40. Analysis & Synthesis Messages
+ 41. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sat Jul 11 11:23:52 2020           ;
+; Quartus Prime Version              ; 17.0.0 Build 595 04/25/2017 SJ Standard Edition ;
+; Revision Name                      ; face_blur                                       ;
+; Top-level Entity Name              ; face_blur                                       ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; 2,525                                           ;
+;     Total combinational functions  ; 2,513                                           ;
+;     Dedicated logic registers      ; 432                                             ;
+; Total registers                    ; 432                                             ;
+; Total pins                         ; 44                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 4,194,304                                       ;
+; Embedded Multiplier 9-bit elements ; 7                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; face_blur          ; face_blur          ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; OpenCore Plus hardware evaluation                                          ; Enable             ; Enable             ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                  ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                              ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
+; read_data.v                      ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v                   ;         ;
+; output_jpg.v                     ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v                  ;         ;
+; face_blur.v                      ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/face_blur.v                   ;         ;
+; ram1.v                           ; yes             ; User Wizard-Generated File   ; F:/intelFPGA/signal2/face_blur/verilog/lab3/ram1.v                        ;         ;
+; data_ctrl.v                      ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v                   ;         ;
+; blur.v                           ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v                        ;         ;
+; covAB.v                          ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v                       ;         ;
+; calcu_a.v                        ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v                     ;         ;
+; calcu_b.v                        ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v                     ;         ;
+; result.v                         ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v                      ;         ;
+; wire_switch.v                    ; yes             ; User Verilog HDL File        ; F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v                 ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/altsyncram.tdf          ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/stratix_ram_block.inc   ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/lpm_mux.inc             ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/lpm_decode.inc          ;         ;
+; aglobal170.inc                   ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/aglobal170.inc          ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/a_rdenreg.inc           ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/altrom.inc              ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/altram.inc              ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/altdpram.inc            ;         ;
+; db/altsyncram_skf1.tdf           ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/altsyncram_skf1.tdf        ;         ;
+; db/decode_rsa.tdf                ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/decode_rsa.tdf             ;         ;
+; db/decode_k8a.tdf                ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/decode_k8a.tdf             ;         ;
+; db/mux_qob.tdf                   ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/mux_qob.tdf                ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/lpm_mult.tdf            ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/lpm_add_sub.inc         ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/multcore.inc            ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/bypassff.inc            ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/altshift.inc            ;         ;
+; multcore.tdf                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/multcore.tdf            ;         ;
+; csa_add.inc                      ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/csa_add.inc             ;         ;
+; mpar_add.inc                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/mpar_add.inc            ;         ;
+; muleabz.inc                      ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/muleabz.inc             ;         ;
+; mul_lfrg.inc                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/mul_lfrg.inc            ;         ;
+; mul_boothc.inc                   ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/mul_boothc.inc          ;         ;
+; alt_ded_mult.inc                 ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/alt_ded_mult.inc        ;         ;
+; alt_ded_mult_y.inc               ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/alt_ded_mult_y.inc      ;         ;
+; dffpipe.inc                      ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/dffpipe.inc             ;         ;
+; mpar_add.tdf                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/mpar_add.tdf            ;         ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/lpm_add_sub.tdf         ;         ;
+; addcore.inc                      ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/addcore.inc             ;         ;
+; look_add.inc                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/look_add.inc            ;         ;
+; alt_stratix_add_sub.inc          ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/alt_stratix_add_sub.inc ;         ;
+; db/add_sub_lgh.tdf               ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/add_sub_lgh.tdf            ;         ;
+; db/add_sub_pgh.tdf               ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/add_sub_pgh.tdf            ;         ;
+; altshift.tdf                     ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/altshift.tdf            ;         ;
+; db/mult_7dt.tdf                  ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/mult_7dt.tdf               ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/lpm_divide.tdf          ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/abs_divider.inc         ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; f:/intelfpga/17.0/quartus/libraries/megafunctions/sign_div_unsign.inc     ;         ;
+; db/lpm_divide_jkm.tdf            ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/lpm_divide_jkm.tdf         ;         ;
+; db/sign_div_unsign_bnh.tdf       ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/sign_div_unsign_bnh.tdf    ;         ;
+; db/alt_u_div_aaf.tdf             ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/alt_u_div_aaf.tdf          ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/add_sub_7pc.tdf            ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/add_sub_8pc.tdf            ;         ;
+; db/mult_aat.tdf                  ; yes             ; Auto-Generated Megafunction  ; F:/intelFPGA/signal2/face_blur/verilog/lab3/db/mult_aat.tdf               ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary              ;
++---------------------------------------------+------------+
+; Resource                                    ; Usage      ;
++---------------------------------------------+------------+
+; Estimated Total logic elements              ; 2,525      ;
+;                                             ;            ;
+; Total combinational functions               ; 2513       ;
+; Logic element usage by number of LUT inputs ;            ;
+;     -- 4 input functions                    ; 1223       ;
+;     -- 3 input functions                    ; 949        ;
+;     -- <=2 input functions                  ; 341        ;
+;                                             ;            ;
+; Logic elements by mode                      ;            ;
+;     -- normal mode                          ; 1736       ;
+;     -- arithmetic mode                      ; 777        ;
+;                                             ;            ;
+; Total registers                             ; 432        ;
+;     -- Dedicated logic registers            ; 432        ;
+;     -- I/O registers                        ; 0          ;
+;                                             ;            ;
+; I/O pins                                    ; 44         ;
+; Total memory bits                           ; 4194304    ;
+;                                             ;            ;
+; Embedded Multiplier 9-bit elements          ; 7          ;
+;                                             ;            ;
+; Maximum fan-out node                        ; iCLK~input ;
+; Maximum fan-out                             ; 944        ;
+; Total fan-out                               ; 18223      ;
+; Average fan-out                             ; 5.13       ;
++---------------------------------------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                       ;
++------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                           ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                ; Entity Name         ; Library Name ;
++------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |face_blur                                           ; 2513 (1)            ; 432 (0)                   ; 4194304     ; 7            ; 1       ; 3         ; 44   ; 0            ; |face_blur                                                                                                                                                         ; face_blur           ; work         ;
+;    |data_ctrl:data_ctrl_inst|                        ; 2125 (0)            ; 408 (0)                   ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst                                                                                                                                ; data_ctrl           ; work         ;
+;       |blur:b0|                                      ; 694 (659)           ; 280 (280)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0                                                                                                                        ; blur                ; work         ;
+;          |lpm_mult:Mult0|                            ; 35 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0                                                                                                         ; lpm_mult            ; work         ;
+;             |multcore:mult_core|                     ; 35 (17)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core                                                                                      ; multcore            ; work         ;
+;                |mpar_add:padder|                     ; 18 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder                                                                      ; mpar_add            ; work         ;
+;                   |lpm_add_sub:adder[0]|             ; 11 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ; lpm_add_sub         ; work         ;
+;                      |add_sub_lgh:auto_generated|    ; 11 (11)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_lgh:auto_generated                      ; add_sub_lgh         ; work         ;
+;                   |mpar_add:sub_par_add|             ; 7 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ; mpar_add            ; work         ;
+;                      |lpm_add_sub:adder[0]|          ; 7 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ; lpm_add_sub         ; work         ;
+;                         |add_sub_pgh:auto_generated| ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_pgh:auto_generated ; add_sub_pgh         ; work         ;
+;       |calcu_a:calcu_a_inst|                         ; 680 (42)            ; 19 (19)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst                                                                                                           ; calcu_a             ; work         ;
+;          |lpm_divide:Div0|                           ; 638 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|lpm_divide:Div0                                                                                           ; lpm_divide          ; work         ;
+;             |lpm_divide_jkm:auto_generated|          ; 638 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|lpm_divide:Div0|lpm_divide_jkm:auto_generated                                                             ; lpm_divide_jkm      ; work         ;
+;                |sign_div_unsign_bnh:divider|         ; 638 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|lpm_divide:Div0|lpm_divide_jkm:auto_generated|sign_div_unsign_bnh:divider                                 ; sign_div_unsign_bnh ; work         ;
+;                   |alt_u_div_aaf:divider|            ; 638 (638)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|lpm_divide:Div0|lpm_divide_jkm:auto_generated|sign_div_unsign_bnh:divider|alt_u_div_aaf:divider           ; alt_u_div_aaf       ; work         ;
+;       |calcu_b:calcu_b_inst|                         ; 41 (41)             ; 19 (19)                   ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst                                                                                                           ; calcu_b             ; work         ;
+;          |lpm_mult:Mult0|                            ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|lpm_mult:Mult0                                                                                            ; lpm_mult            ; work         ;
+;             |mult_7dt:auto_generated|                ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|lpm_mult:Mult0|mult_7dt:auto_generated                                                                    ; mult_7dt            ; work         ;
+;       |covAB:covAB_inst|                             ; 57 (57)             ; 19 (19)                   ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst                                                                                                               ; covAB               ; work         ;
+;          |lpm_mult:Mult0|                            ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0                                                                                                ; lpm_mult            ; work         ;
+;             |mult_7dt:auto_generated|                ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0|mult_7dt:auto_generated                                                                        ; mult_7dt            ; work         ;
+;       |flow_ctrl:flow_ctrl_inst|                     ; 58 (58)             ; 14 (14)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst                                                                                                       ; flow_ctrl           ; work         ;
+;       |output_jpg:output_jpg_inst|                   ; 25 (25)             ; 19 (19)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst                                                                                                     ; output_jpg          ; work         ;
+;       |read_data:read_data_inst|                     ; 26 (26)             ; 19 (19)                   ; 0           ; 1            ; 1       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst                                                                                                       ; read_data           ; work         ;
+;          |lpm_mult:Mult0|                            ; 0 (0)               ; 0 (0)                     ; 0           ; 1            ; 1       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst|lpm_mult:Mult0                                                                                        ; lpm_mult            ; work         ;
+;             |mult_aat:auto_generated|                ; 0 (0)               ; 0 (0)                     ; 0           ; 1            ; 1       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst|lpm_mult:Mult0|mult_aat:auto_generated                                                                ; mult_aat            ; work         ;
+;       |result:result_inst|                           ; 48 (48)             ; 19 (19)                   ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|result:result_inst                                                                                                             ; result              ; work         ;
+;          |lpm_mult:Mult0|                            ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0                                                                                              ; lpm_mult            ; work         ;
+;             |mult_7dt:auto_generated|                ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0|mult_7dt:auto_generated                                                                      ; mult_7dt            ; work         ;
+;       |wire_switch:wire_switch_inst|                 ; 496 (496)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst                                                                                                   ; wire_switch         ; work         ;
+;    |ram1:u1|                                         ; 98 (0)              ; 6 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u1                                                                                                                                                 ; ram1                ; work         ;
+;       |altsyncram:altsyncram_component|              ; 98 (0)              ; 6 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u1|altsyncram:altsyncram_component                                                                                                                 ; altsyncram          ; work         ;
+;          |altsyncram_skf1:auto_generated|            ; 98 (0)              ; 6 (6)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated                                                                                  ; altsyncram_skf1     ; work         ;
+;             |decode_k8a:rden_decode|                 ; 6 (6)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_k8a:rden_decode                                                           ; decode_k8a          ; work         ;
+;             |decode_rsa:decode3|                     ; 12 (12)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_rsa:decode3                                                               ; decode_rsa          ; work         ;
+;             |mux_qob:mux2|                           ; 80 (80)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|mux_qob:mux2                                                                     ; mux_qob             ; work         ;
+;    |ram1:u2|                                         ; 96 (0)              ; 6 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2                                                                                                                                                 ; ram1                ; work         ;
+;       |altsyncram:altsyncram_component|              ; 96 (0)              ; 6 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component                                                                                                                 ; altsyncram          ; work         ;
+;          |altsyncram_skf1:auto_generated|            ; 96 (0)              ; 6 (6)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated                                                                                  ; altsyncram_skf1     ; work         ;
+;             |decode_k8a:rden_decode|                 ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_k8a:rden_decode                                                           ; decode_k8a          ; work         ;
+;             |decode_rsa:decode3|                     ; 9 (9)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_rsa:decode3                                                               ; decode_rsa          ; work         ;
+;             |mux_qob:mux2|                           ; 80 (80)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u2|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|mux_qob:mux2                                                                     ; mux_qob             ; work         ;
+;    |ram1:u3|                                         ; 97 (0)              ; 6 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u3                                                                                                                                                 ; ram1                ; work         ;
+;       |altsyncram:altsyncram_component|              ; 97 (0)              ; 6 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u3|altsyncram:altsyncram_component                                                                                                                 ; altsyncram          ; work         ;
+;          |altsyncram_skf1:auto_generated|            ; 97 (0)              ; 6 (6)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u3|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated                                                                                  ; altsyncram_skf1     ; work         ;
+;             |decode_k8a:rden_decode|                 ; 9 (9)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u3|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_k8a:rden_decode                                                           ; decode_k8a          ; work         ;
+;             |decode_rsa:decode3|                     ; 8 (8)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u3|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_rsa:decode3                                                               ; decode_rsa          ; work         ;
+;             |mux_qob:mux2|                           ; 80 (80)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u3|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|mux_qob:mux2                                                                     ; mux_qob             ; work         ;
+;    |ram1:u4|                                         ; 96 (0)              ; 6 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u4                                                                                                                                                 ; ram1                ; work         ;
+;       |altsyncram:altsyncram_component|              ; 96 (0)              ; 6 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u4|altsyncram:altsyncram_component                                                                                                                 ; altsyncram          ; work         ;
+;          |altsyncram_skf1:auto_generated|            ; 96 (0)              ; 6 (6)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u4|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated                                                                                  ; altsyncram_skf1     ; work         ;
+;             |decode_k8a:rden_decode|                 ; 8 (8)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u4|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_k8a:rden_decode                                                           ; decode_k8a          ; work         ;
+;             |decode_rsa:decode3|                     ; 8 (8)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u4|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_rsa:decode3                                                               ; decode_rsa          ; work         ;
+;             |mux_qob:mux2|                           ; 80 (80)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |face_blur|ram1:u4|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|mux_qob:mux2                                                                     ; mux_qob             ; work         ;
++------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                    ;
++-----------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+---------+------+
+; Name                                                                              ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF  ;
++-----------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+---------+------+
+; ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 65536        ; 16           ; --           ; --           ; 1048576 ; None ;
+; ram1:u2|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 65536        ; 16           ; --           ; --           ; 1048576 ; None ;
+; ram1:u3|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 65536        ; 16           ; --           ; --           ; 1048576 ; None ;
+; ram1:u4|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 65536        ; 16           ; --           ; --           ; 1048576 ; None ;
++-----------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+---------+------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 1           ;
+; Simple Multipliers (18-bit)           ; 3           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 7           ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 4           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
++------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                ;
++--------+--------------+---------+--------------+--------------+--------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance    ; IP Include File ;
++--------+--------------+---------+--------------+--------------+--------------------+-----------------+
+; Altera ; RAM: 1-PORT  ; 17.0    ; N/A          ; N/A          ; |face_blur|ram1:u1 ; ram1.v          ;
+; Altera ; RAM: 1-PORT  ; 17.0    ; N/A          ; N/A          ; |face_blur|ram1:u2 ; ram1.v          ;
+; Altera ; RAM: 1-PORT  ; 17.0    ; N/A          ; N/A          ; |face_blur|ram1:u3 ; ram1.v          ;
+; Altera ; RAM: 1-PORT  ; 17.0    ; N/A          ; N/A          ; |face_blur|ram1:u4 ; ram1.v          ;
++--------+--------------+---------+--------------+--------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------+
+; State Machine - |face_blur|data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst|STATUS ;
++-----------+-----------+-----------+---------------------------------------------------+
+; Name      ; STATUS.00 ; STATUS.10 ; STATUS.01                                         ;
++-----------+-----------+-----------+---------------------------------------------------+
+; STATUS.00 ; 0         ; 0         ; 0                                                 ;
+; STATUS.01 ; 1         ; 0         ; 1                                                 ;
+; STATUS.10 ; 1         ; 1         ; 0                                                 ;
++-----------+-----------+-----------+---------------------------------------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------+
+; State Machine - |face_blur|data_ctrl:data_ctrl_inst|result:result_inst|STATUS ;
++-----------+-----------+-----------+-----------+-------------------------------+
+; Name      ; STATUS.11 ; STATUS.10 ; STATUS.01 ; STATUS.00                     ;
++-----------+-----------+-----------+-----------+-------------------------------+
+; STATUS.00 ; 0         ; 0         ; 0         ; 0                             ;
+; STATUS.01 ; 0         ; 0         ; 1         ; 1                             ;
+; STATUS.10 ; 0         ; 1         ; 0         ; 1                             ;
+; STATUS.11 ; 1         ; 0         ; 0         ; 1                             ;
++-----------+-----------+-----------+-----------+-------------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------+
+; State Machine - |face_blur|data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|STATUS ;
++-----------+-----------+-----------+-----------+---------------------------------+
+; Name      ; STATUS.11 ; STATUS.10 ; STATUS.01 ; STATUS.00                       ;
++-----------+-----------+-----------+-----------+---------------------------------+
+; STATUS.00 ; 0         ; 0         ; 0         ; 0                               ;
+; STATUS.01 ; 0         ; 0         ; 1         ; 1                               ;
+; STATUS.10 ; 0         ; 1         ; 0         ; 1                               ;
+; STATUS.11 ; 1         ; 0         ; 0         ; 1                               ;
++-----------+-----------+-----------+-----------+---------------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------+
+; State Machine - |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|STATUS ;
++-----------+-----------+-----------+-----------+---------------------------------+
+; Name      ; STATUS.11 ; STATUS.10 ; STATUS.01 ; STATUS.00                       ;
++-----------+-----------+-----------+-----------+---------------------------------+
+; STATUS.00 ; 0         ; 0         ; 0         ; 0                               ;
+; STATUS.01 ; 0         ; 0         ; 1         ; 1                               ;
+; STATUS.10 ; 0         ; 1         ; 0         ; 1                               ;
+; STATUS.11 ; 1         ; 0         ; 0         ; 1                               ;
++-----------+-----------+-----------+-----------+---------------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------+
+; State Machine - |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst|STATUS ;
++-----------+-----------+-----------+-----------+-----------------------------+
+; Name      ; STATUS.11 ; STATUS.10 ; STATUS.01 ; STATUS.00                   ;
++-----------+-----------+-----------+-----------+-----------------------------+
+; STATUS.00 ; 0         ; 0         ; 0         ; 0                           ;
+; STATUS.01 ; 0         ; 0         ; 1         ; 1                           ;
+; STATUS.10 ; 0         ; 1         ; 0         ; 1                           ;
+; STATUS.11 ; 1         ; 0         ; 0         ; 1                           ;
++-----------+-----------+-----------+-----------+-----------------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------+
+; State Machine - |face_blur|data_ctrl:data_ctrl_inst|blur:b0|STATUS ;
++------------+------------+------------+------------+----------------+
+; Name       ; STATUS.011 ; STATUS.010 ; STATUS.001 ; STATUS.000     ;
++------------+------------+------------+------------+----------------+
+; STATUS.000 ; 0          ; 0          ; 0          ; 0              ;
+; STATUS.001 ; 0          ; 0          ; 1          ; 1              ;
+; STATUS.010 ; 0          ; 1          ; 0          ; 1              ;
+; STATUS.011 ; 1          ; 0          ; 0          ; 1              ;
++------------+------------+------------+------------+----------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------+
+; State Machine - |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst|STATUS ;
++-----------+-----------+-----------+-----------+-------------------------------------+
+; Name      ; STATUS.11 ; STATUS.10 ; STATUS.01 ; STATUS.00                           ;
++-----------+-----------+-----------+-----------+-------------------------------------+
+; STATUS.00 ; 0         ; 0         ; 0         ; 0                                   ;
+; STATUS.01 ; 0         ; 0         ; 1         ; 1                                   ;
+; STATUS.10 ; 0         ; 1         ; 0         ; 1                                   ;
+; STATUS.11 ; 1         ; 0         ; 0         ; 1                                   ;
++-----------+-----------+-----------+-----------+-------------------------------------+
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-------------------------------------------------------------+--------------------+
+; Register name                                               ; Reason for Removal ;
++-------------------------------------------------------------+--------------------+
+; data_ctrl:data_ctrl_inst|result:result_inst|STATUS.11       ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|STATUS.11     ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|STATUS.11     ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|covAB:covAB_inst|STATUS.11         ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|read_data:read_data_inst|STATUS.11 ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|result:result_inst|STATUS~2        ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|result:result_inst|STATUS~3        ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|STATUS~2      ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|STATUS~3      ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|STATUS~2      ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|STATUS~3      ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|covAB:covAB_inst|STATUS~2          ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|covAB:covAB_inst|STATUS~3          ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|blur:b0|STATUS~3                   ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|blur:b0|STATUS~4                   ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|blur:b0|STATUS~5                   ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|read_data:read_data_inst|STATUS~2  ; Lost fanout        ;
+; data_ctrl:data_ctrl_inst|read_data:read_data_inst|STATUS~3  ; Lost fanout        ;
+; Total Number of Removed Registers = 18                      ;                    ;
++-------------------------------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 432   ;
+; Number of registers using Synchronous Clear  ; 140   ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|STATUS[0]      ;
+; 3:1                ; 240 bits  ; 480 LEs       ; 240 LEs              ; 240 LEs                ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|databuf[5][0]                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[9]         ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[1]         ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst|iAddrA[15]   ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|result:result_inst|iAddr[13]            ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|iAddr[13]          ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|iAddr[12]          ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|covAB:covAB_inst|iAddr[15]              ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|read_data:read_data_inst|iAddr[1]       ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[7]         ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ena[3]         ;
+; 10:1               ; 16 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|databuf[0][10]                  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|oDATA[2]   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|iAddrA[0]                       ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|iAddrB[9]                       ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr3[2]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst|ShiftLeft0     ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr2[2]  ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr1[1]  ;
+; 6:1                ; 13 bits   ; 52 LEs        ; 39 LEs               ; 13 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr2[4]  ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr4[1]  ;
+; 8:1                ; 13 bits   ; 65 LEs        ; 52 LEs               ; 13 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr1[4]  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|blur:b0|STATUS                          ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData4[6]  ;
+; 12:1               ; 14 bits   ; 112 LEs       ; 56 LEs               ; 56 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData2[2]  ;
+; 9:1                ; 13 bits   ; 78 LEs        ; 52 LEs               ; 26 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iAddr4[12] ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData1[1]  ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData1[11] ;
+; 11:1               ; 8 bits    ; 56 LEs        ; 32 LEs               ; 24 LEs                 ; No         ; |face_blur|data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst|iData4[11] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Source assignments for ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------+
+; Assignment                      ; Value              ; From ; To                              ;
++---------------------------------+--------------------+------+---------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
++---------------------------------+--------------------+------+---------------------------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Source assignments for ram1:u2|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------+
+; Assignment                      ; Value              ; From ; To                              ;
++---------------------------------+--------------------+------+---------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
++---------------------------------+--------------------+------+---------------------------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Source assignments for ram1:u3|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------+
+; Assignment                      ; Value              ; From ; To                              ;
++---------------------------------+--------------------+------+---------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
++---------------------------------+--------------------+------+---------------------------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Source assignments for ram1:u4|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------+
+; Assignment                      ; Value              ; From ; To                              ;
++---------------------------------+--------------------+------+---------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
++---------------------------------+--------------------+------+---------------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ram1:u1|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+--------------------------+
+; Parameter Name                     ; Value                ; Type                     ;
++------------------------------------+----------------------+--------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                  ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY               ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY             ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE             ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE           ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                  ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                  ;
+; WIDTH_A                            ; 16                   ; Signed Integer           ;
+; WIDTHAD_A                          ; 16                   ; Signed Integer           ;
+; NUMWORDS_A                         ; 65536                ; Signed Integer           ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                  ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                  ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WIDTH_B                            ; 1                    ; Untyped                  ;
+; WIDTHAD_B                          ; 1                    ; Untyped                  ;
+; NUMWORDS_B                         ; 1                    ; Untyped                  ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                  ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                  ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                  ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                  ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                  ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                  ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer           ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                  ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                  ;
+; BYTE_SIZE                          ; 8                    ; Untyped                  ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; INIT_FILE                          ; UNUSED               ; Untyped                  ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                  ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                  ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                  ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                  ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                  ;
+; CBXI_PARAMETER                     ; altsyncram_skf1      ; Untyped                  ;
++------------------------------------+----------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ram1:u2|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+--------------------------+
+; Parameter Name                     ; Value                ; Type                     ;
++------------------------------------+----------------------+--------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                  ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY               ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY             ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE             ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE           ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                  ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                  ;
+; WIDTH_A                            ; 16                   ; Signed Integer           ;
+; WIDTHAD_A                          ; 16                   ; Signed Integer           ;
+; NUMWORDS_A                         ; 65536                ; Signed Integer           ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                  ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                  ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WIDTH_B                            ; 1                    ; Untyped                  ;
+; WIDTHAD_B                          ; 1                    ; Untyped                  ;
+; NUMWORDS_B                         ; 1                    ; Untyped                  ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                  ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                  ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                  ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                  ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                  ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                  ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer           ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                  ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                  ;
+; BYTE_SIZE                          ; 8                    ; Untyped                  ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; INIT_FILE                          ; UNUSED               ; Untyped                  ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                  ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                  ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                  ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                  ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                  ;
+; CBXI_PARAMETER                     ; altsyncram_skf1      ; Untyped                  ;
++------------------------------------+----------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ram1:u3|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+--------------------------+
+; Parameter Name                     ; Value                ; Type                     ;
++------------------------------------+----------------------+--------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                  ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY               ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY             ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE             ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE           ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                  ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                  ;
+; WIDTH_A                            ; 16                   ; Signed Integer           ;
+; WIDTHAD_A                          ; 16                   ; Signed Integer           ;
+; NUMWORDS_A                         ; 65536                ; Signed Integer           ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                  ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                  ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WIDTH_B                            ; 1                    ; Untyped                  ;
+; WIDTHAD_B                          ; 1                    ; Untyped                  ;
+; NUMWORDS_B                         ; 1                    ; Untyped                  ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                  ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                  ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                  ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                  ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                  ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                  ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer           ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                  ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                  ;
+; BYTE_SIZE                          ; 8                    ; Untyped                  ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; INIT_FILE                          ; UNUSED               ; Untyped                  ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                  ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                  ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                  ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                  ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                  ;
+; CBXI_PARAMETER                     ; altsyncram_skf1      ; Untyped                  ;
++------------------------------------+----------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ram1:u4|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+--------------------------+
+; Parameter Name                     ; Value                ; Type                     ;
++------------------------------------+----------------------+--------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                  ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY               ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY             ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE             ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE           ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                  ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                  ;
+; WIDTH_A                            ; 16                   ; Signed Integer           ;
+; WIDTHAD_A                          ; 16                   ; Signed Integer           ;
+; NUMWORDS_A                         ; 65536                ; Signed Integer           ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                  ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                  ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                  ;
+; WIDTH_B                            ; 1                    ; Untyped                  ;
+; WIDTHAD_B                          ; 1                    ; Untyped                  ;
+; NUMWORDS_B                         ; 1                    ; Untyped                  ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                  ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                  ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                  ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                  ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                  ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                  ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                  ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                  ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                  ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                  ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer           ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                  ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                  ;
+; BYTE_SIZE                          ; 8                    ; Untyped                  ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                  ;
+; INIT_FILE                          ; UNUSED               ; Untyped                  ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                  ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                  ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                  ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                  ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                  ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                  ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                  ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                  ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                  ;
+; CBXI_PARAMETER                     ; altsyncram_skf1      ; Untyped                  ;
++------------------------------------+----------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0 ;
++------------------------------------------------+--------------+----------------------------------+
+; Parameter Name                                 ; Value        ; Type                             ;
++------------------------------------------------+--------------+----------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                       ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                     ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                     ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                   ;
+; LPM_WIDTHA                                     ; 10           ; Untyped                          ;
+; LPM_WIDTHB                                     ; 8            ; Untyped                          ;
+; LPM_WIDTHP                                     ; 18           ; Untyped                          ;
+; LPM_WIDTHR                                     ; 18           ; Untyped                          ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                          ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped                          ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                          ;
+; LATENCY                                        ; 0            ; Untyped                          ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                          ;
+; INPUT_B_IS_CONSTANT                            ; YES          ; Untyped                          ;
+; USE_EAB                                        ; OFF          ; Untyped                          ;
+; MAXIMIZE_SPEED                                 ; 6            ; Untyped                          ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                          ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                          ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K              ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                          ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                          ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                          ;
+; CBXI_PARAMETER                                 ; NOTHING      ; Untyped                          ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                          ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                          ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                          ;
++------------------------------------------------+--------------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0 ;
++------------------------------------------------+--------------+---------------------------------------------+
+; Parameter Name                                 ; Value        ; Type                                        ;
++------------------------------------------------+--------------+---------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                                  ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                                ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                                ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                              ;
+; LPM_WIDTHA                                     ; 16           ; Untyped                                     ;
+; LPM_WIDTHB                                     ; 16           ; Untyped                                     ;
+; LPM_WIDTHP                                     ; 32           ; Untyped                                     ;
+; LPM_WIDTHR                                     ; 32           ; Untyped                                     ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                                     ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped                                     ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                                     ;
+; LATENCY                                        ; 0            ; Untyped                                     ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                                     ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                                     ;
+; USE_EAB                                        ; OFF          ; Untyped                                     ;
+; MAXIMIZE_SPEED                                 ; 6            ; Untyped                                     ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                                     ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                                     ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                         ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                                     ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                                     ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                                     ;
+; CBXI_PARAMETER                                 ; mult_7dt     ; Untyped                                     ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                                     ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                                     ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                                     ;
++------------------------------------------------+--------------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|lpm_divide:Div0 ;
++------------------------+----------------+----------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                 ;
++------------------------+----------------+----------------------------------------------------------------------+
+; LPM_WIDTHN             ; 24             ; Untyped                                                              ;
+; LPM_WIDTHD             ; 24             ; Untyped                                                              ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                              ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                              ;
+; CBXI_PARAMETER         ; lpm_divide_jkm ; Untyped                                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                       ;
++------------------------+----------------+----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|read_data:read_data_inst|lpm_mult:Mult0 ;
++------------------------------------------------+--------------+---------------------------------------------------+
+; Parameter Name                                 ; Value        ; Type                                              ;
++------------------------------------------------+--------------+---------------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                                    ;
+; LPM_WIDTHA                                     ; 8            ; Untyped                                           ;
+; LPM_WIDTHB                                     ; 8            ; Untyped                                           ;
+; LPM_WIDTHP                                     ; 16           ; Untyped                                           ;
+; LPM_WIDTHR                                     ; 16           ; Untyped                                           ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                                           ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped                                           ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                                           ;
+; LATENCY                                        ; 0            ; Untyped                                           ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                                           ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                                           ;
+; USE_EAB                                        ; OFF          ; Untyped                                           ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped                                           ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                                           ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                                           ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                               ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                                           ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                                           ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                                           ;
+; CBXI_PARAMETER                                 ; mult_aat     ; Untyped                                           ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                                           ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                                           ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                                           ;
++------------------------------------------------+--------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|lpm_mult:Mult0 ;
++------------------------------------------------+--------------+-----------------------------------------------+
+; Parameter Name                                 ; Value        ; Type                                          ;
++------------------------------------------------+--------------+-----------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                                ;
+; LPM_WIDTHA                                     ; 16           ; Untyped                                       ;
+; LPM_WIDTHB                                     ; 16           ; Untyped                                       ;
+; LPM_WIDTHP                                     ; 32           ; Untyped                                       ;
+; LPM_WIDTHR                                     ; 32           ; Untyped                                       ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                                       ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped                                       ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                                       ;
+; LATENCY                                        ; 0            ; Untyped                                       ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                                       ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                                       ;
+; USE_EAB                                        ; OFF          ; Untyped                                       ;
+; MAXIMIZE_SPEED                                 ; 6            ; Untyped                                       ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                                       ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                                       ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                           ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                                       ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                                       ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                                       ;
+; CBXI_PARAMETER                                 ; mult_7dt     ; Untyped                                       ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                                       ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                                       ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                                       ;
++------------------------------------------------+--------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0 ;
++------------------------------------------------+--------------+-------------------------------------------+
+; Parameter Name                                 ; Value        ; Type                                      ;
++------------------------------------------------+--------------+-------------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                            ;
+; LPM_WIDTHA                                     ; 16           ; Untyped                                   ;
+; LPM_WIDTHB                                     ; 16           ; Untyped                                   ;
+; LPM_WIDTHP                                     ; 32           ; Untyped                                   ;
+; LPM_WIDTHR                                     ; 32           ; Untyped                                   ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                                   ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped                                   ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                                   ;
+; LATENCY                                        ; 0            ; Untyped                                   ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                                   ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                                   ;
+; USE_EAB                                        ; OFF          ; Untyped                                   ;
+; MAXIMIZE_SPEED                                 ; 6            ; Untyped                                   ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                                   ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                                   ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K                       ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                                   ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                                   ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                                   ;
+; CBXI_PARAMETER                                 ; mult_7dt     ; Untyped                                   ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                                   ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                                   ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                                   ;
++------------------------------------------------+--------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                    ;
++-------------------------------------------+-----------------------------------------+
+; Name                                      ; Value                                   ;
++-------------------------------------------+-----------------------------------------+
+; Number of entity instances                ; 4                                       ;
+; Entity Instance                           ; ram1:u1|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                             ;
+;     -- WIDTH_A                            ; 16                                      ;
+;     -- NUMWORDS_A                         ; 65536                                   ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                  ;
+;     -- WIDTH_B                            ; 1                                       ;
+;     -- NUMWORDS_B                         ; 1                                       ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                  ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                    ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                               ;
+; Entity Instance                           ; ram1:u2|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                             ;
+;     -- WIDTH_A                            ; 16                                      ;
+;     -- NUMWORDS_A                         ; 65536                                   ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                  ;
+;     -- WIDTH_B                            ; 1                                       ;
+;     -- NUMWORDS_B                         ; 1                                       ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                  ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                    ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                               ;
+; Entity Instance                           ; ram1:u3|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                             ;
+;     -- WIDTH_A                            ; 16                                      ;
+;     -- NUMWORDS_A                         ; 65536                                   ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                  ;
+;     -- WIDTH_B                            ; 1                                       ;
+;     -- NUMWORDS_B                         ; 1                                       ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                  ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                    ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                               ;
+; Entity Instance                           ; ram1:u4|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                             ;
+;     -- WIDTH_A                            ; 16                                      ;
+;     -- NUMWORDS_A                         ; 65536                                   ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                  ;
+;     -- WIDTH_B                            ; 1                                       ;
+;     -- NUMWORDS_B                         ; 1                                       ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                  ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                    ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                               ;
++-------------------------------------------+-----------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                                           ;
++---------------------------------------+------------------------------------------------------------------+
+; Name                                  ; Value                                                            ;
++---------------------------------------+------------------------------------------------------------------+
+; Number of entity instances            ; 5                                                                ;
+; Entity Instance                       ; data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0                  ;
+;     -- LPM_WIDTHA                     ; 10                                                               ;
+;     -- LPM_WIDTHB                     ; 8                                                                ;
+;     -- LPM_WIDTHP                     ; 18                                                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                               ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                                              ;
+;     -- USE_EAB                        ; OFF                                                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                               ;
+; Entity Instance                       ; data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0       ;
+;     -- LPM_WIDTHA                     ; 16                                                               ;
+;     -- LPM_WIDTHB                     ; 16                                                               ;
+;     -- LPM_WIDTHP                     ; 32                                                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                               ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                               ;
+;     -- USE_EAB                        ; OFF                                                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                               ;
+; Entity Instance                       ; data_ctrl:data_ctrl_inst|read_data:read_data_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                                                ;
+;     -- LPM_WIDTHB                     ; 8                                                                ;
+;     -- LPM_WIDTHP                     ; 16                                                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                               ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                               ;
+;     -- USE_EAB                        ; OFF                                                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                               ;
+; Entity Instance                       ; data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|lpm_mult:Mult0     ;
+;     -- LPM_WIDTHA                     ; 16                                                               ;
+;     -- LPM_WIDTHB                     ; 16                                                               ;
+;     -- LPM_WIDTHP                     ; 32                                                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                               ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                               ;
+;     -- USE_EAB                        ; OFF                                                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                               ;
+; Entity Instance                       ; data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0         ;
+;     -- LPM_WIDTHA                     ; 16                                                               ;
+;     -- LPM_WIDTHB                     ; 16                                                               ;
+;     -- LPM_WIDTHP                     ; 32                                                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                                               ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                                               ;
+;     -- USE_EAB                        ; OFF                                                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                                               ;
++---------------------------------------+------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst"                                                                                               ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                      ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; _done[15..9] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; _done[6..4]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; _done[1..0]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; iDVAL        ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 44                          ;
+; cycloneiii_ff         ; 432                         ;
+;     SCLR              ; 124                         ;
+;     SCLR SLD          ; 16                          ;
+;     plain             ; 292                         ;
+; cycloneiii_lcell_comb ; 2513                        ;
+;     arith             ; 777                         ;
+;         2 data inputs ; 162                         ;
+;         3 data inputs ; 615                         ;
+;     normal            ; 1736                        ;
+;         0 data inputs ; 39                          ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 127                         ;
+;         3 data inputs ; 334                         ;
+;         4 data inputs ; 1223                        ;
+; cycloneiii_mac_mult   ; 4                           ;
+; cycloneiii_mac_out    ; 4                           ;
+; cycloneiii_ram_block  ; 512                         ;
+;                       ;                             ;
+; Max LUT depth         ; 83.10                       ;
+; Average LUT depth     ; 26.24                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:02:29     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Standard Edition
+    Info: Processing started: Sat Jul 11 11:21:05 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off face_blur -c face_blur
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file read_data.v
+    Info (12023): Found entity 1: read_data File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file output_jpg.v
+    Info (12023): Found entity 1: output_jpg File: F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file face_tb.v
+    Info (12023): Found entity 1: face_TB File: F:/intelFPGA/signal2/face_blur/verilog/lab3/face_TB.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file face_blur.v
+    Info (12023): Found entity 1: face_blur File: F:/intelFPGA/signal2/face_blur/verilog/lab3/face_blur.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ram1.v
+    Info (12023): Found entity 1: ram1 File: F:/intelFPGA/signal2/face_blur/verilog/lab3/ram1.v Line: 40
+Info (12021): Found 2 design units, including 2 entities, in source file data_ctrl.v
+    Info (12023): Found entity 1: flow_ctrl File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 1
+    Info (12023): Found entity 2: data_ctrl File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file blur.v
+    Info (12023): Found entity 1: blur File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file covab.v
+    Info (12023): Found entity 1: covAB File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file calcu_a.v
+    Info (12023): Found entity 1: calcu_a File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file calcu_b.v
+    Info (12023): Found entity 1: calcu_b File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file result.v
+    Info (12023): Found entity 1: result File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file wire_switch.v
+    Info (12023): Found entity 1: wire_switch File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 1
+Info (12127): Elaborating entity "face_blur" for the top level hierarchy
+Info (12128): Elaborating entity "data_ctrl" for hierarchy "data_ctrl:data_ctrl_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/face_blur.v Line: 61
+Info (12128): Elaborating entity "flow_ctrl" for hierarchy "data_ctrl:data_ctrl_inst|flow_ctrl:flow_ctrl_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 78
+Warning (10230): Verilog HDL assignment warning at data_ctrl.v(17): truncated value with size 32 to match size of target (4) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 17
+Warning (10230): Verilog HDL assignment warning at data_ctrl.v(18): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 18
+Info (12128): Elaborating entity "read_data" for hierarchy "data_ctrl:data_ctrl_inst|read_data:read_data_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 107
+Warning (10036): Verilog HDL or VHDL warning at read_data.v(26): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 26
+Warning (10036): Verilog HDL or VHDL warning at read_data.v(26): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 26
+Warning (10230): Verilog HDL assignment warning at read_data.v(27): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 27
+Warning (10230): Verilog HDL assignment warning at read_data.v(28): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 28
+Warning (10230): Verilog HDL assignment warning at read_data.v(29): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 29
+Warning (10230): Verilog HDL assignment warning at read_data.v(30): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 30
+Warning (10230): Verilog HDL assignment warning at read_data.v(43): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 43
+Warning (10230): Verilog HDL assignment warning at read_data.v(44): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 44
+Warning (10230): Verilog HDL assignment warning at read_data.v(45): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 45
+Warning (10230): Verilog HDL assignment warning at read_data.v(46): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 46
+Warning (10230): Verilog HDL assignment warning at read_data.v(47): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 47
+Warning (10230): Verilog HDL assignment warning at read_data.v(48): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 48
+Warning (10230): Verilog HDL assignment warning at read_data.v(49): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 49
+Warning (10230): Verilog HDL assignment warning at read_data.v(61): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 61
+Info (10264): Verilog HDL Case Statement information at read_data.v(75): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 75
+Info (12128): Elaborating entity "blur" for hierarchy "data_ctrl:data_ctrl_inst|blur:b0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 151
+Warning (10036): Verilog HDL or VHDL warning at blur.v(22): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 22
+Warning (10230): Verilog HDL assignment warning at blur.v(23): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 23
+Warning (10230): Verilog HDL assignment warning at blur.v(24): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 24
+Warning (10230): Verilog HDL assignment warning at blur.v(25): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 25
+Warning (10230): Verilog HDL assignment warning at blur.v(26): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 26
+Warning (10230): Verilog HDL assignment warning at blur.v(33): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 33
+Warning (10230): Verilog HDL assignment warning at blur.v(50): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 50
+Warning (10230): Verilog HDL assignment warning at blur.v(51): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 51
+Warning (10230): Verilog HDL assignment warning at blur.v(53): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 53
+Warning (10230): Verilog HDL assignment warning at blur.v(55): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 55
+Warning (10230): Verilog HDL assignment warning at blur.v(57): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 57
+Warning (10230): Verilog HDL assignment warning at blur.v(58): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 58
+Warning (10230): Verilog HDL assignment warning at blur.v(59): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 59
+Warning (10230): Verilog HDL assignment warning at blur.v(61): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 61
+Warning (10230): Verilog HDL assignment warning at blur.v(93): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 93
+Warning (10230): Verilog HDL assignment warning at blur.v(96): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 96
+Warning (10230): Verilog HDL assignment warning at blur.v(107): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 107
+Warning (10230): Verilog HDL assignment warning at blur.v(110): truncated value with size 32 to match size of target (10) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 110
+Info (10264): Verilog HDL Case Statement information at blur.v(90): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 90
+Info (12128): Elaborating entity "covAB" for hierarchy "data_ctrl:data_ctrl_inst|covAB:covAB_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 177
+Warning (10036): Verilog HDL or VHDL warning at covAB.v(24): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 24
+Warning (10036): Verilog HDL or VHDL warning at covAB.v(24): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 24
+Warning (10230): Verilog HDL assignment warning at covAB.v(25): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 25
+Warning (10230): Verilog HDL assignment warning at covAB.v(26): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 26
+Warning (10230): Verilog HDL assignment warning at covAB.v(27): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 27
+Warning (10230): Verilog HDL assignment warning at covAB.v(28): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 28
+Warning (10230): Verilog HDL assignment warning at covAB.v(35): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 35
+Warning (10230): Verilog HDL assignment warning at covAB.v(38): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 38
+Warning (10230): Verilog HDL assignment warning at covAB.v(39): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 39
+Warning (10230): Verilog HDL assignment warning at covAB.v(51): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 51
+Info (10264): Verilog HDL Case Statement information at covAB.v(65): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 65
+Info (12128): Elaborating entity "calcu_a" for hierarchy "data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 199
+Warning (10036): Verilog HDL or VHDL warning at calcu_a.v(22): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 22
+Warning (10036): Verilog HDL or VHDL warning at calcu_a.v(22): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 22
+Warning (10230): Verilog HDL assignment warning at calcu_a.v(23): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 23
+Warning (10230): Verilog HDL assignment warning at calcu_a.v(24): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 24
+Warning (10230): Verilog HDL assignment warning at calcu_a.v(25): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 25
+Warning (10230): Verilog HDL assignment warning at calcu_a.v(26): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 26
+Warning (10230): Verilog HDL assignment warning at calcu_a.v(40): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 40
+Warning (10230): Verilog HDL assignment warning at calcu_a.v(42): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 42
+Warning (10230): Verilog HDL assignment warning at calcu_a.v(43): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 43
+Warning (10230): Verilog HDL assignment warning at calcu_a.v(55): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 55
+Info (10264): Verilog HDL Case Statement information at calcu_a.v(69): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 69
+Info (12128): Elaborating entity "calcu_b" for hierarchy "data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 225
+Warning (10036): Verilog HDL or VHDL warning at calcu_b.v(24): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 24
+Warning (10036): Verilog HDL or VHDL warning at calcu_b.v(24): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 24
+Warning (10230): Verilog HDL assignment warning at calcu_b.v(25): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 25
+Warning (10230): Verilog HDL assignment warning at calcu_b.v(26): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 26
+Warning (10230): Verilog HDL assignment warning at calcu_b.v(27): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 27
+Warning (10230): Verilog HDL assignment warning at calcu_b.v(28): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 28
+Warning (10230): Verilog HDL assignment warning at calcu_b.v(43): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 43
+Warning (10230): Verilog HDL assignment warning at calcu_b.v(46): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 46
+Warning (10230): Verilog HDL assignment warning at calcu_b.v(47): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 47
+Warning (10230): Verilog HDL assignment warning at calcu_b.v(59): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 59
+Info (10264): Verilog HDL Case Statement information at calcu_b.v(73): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 73
+Info (12128): Elaborating entity "result" for hierarchy "data_ctrl:data_ctrl_inst|result:result_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 255
+Warning (10036): Verilog HDL or VHDL warning at result.v(27): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 27
+Warning (10036): Verilog HDL or VHDL warning at result.v(27): object "s3" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 27
+Warning (10230): Verilog HDL assignment warning at result.v(28): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 28
+Warning (10230): Verilog HDL assignment warning at result.v(29): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 29
+Warning (10230): Verilog HDL assignment warning at result.v(30): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 30
+Warning (10230): Verilog HDL assignment warning at result.v(31): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 31
+Warning (10230): Verilog HDL assignment warning at result.v(39): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 39
+Warning (10230): Verilog HDL assignment warning at result.v(43): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 43
+Warning (10230): Verilog HDL assignment warning at result.v(44): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 44
+Warning (10230): Verilog HDL assignment warning at result.v(56): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 56
+Info (10264): Verilog HDL Case Statement information at result.v(70): all case item expressions in this case statement are onehot File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 70
+Info (12128): Elaborating entity "output_jpg" for hierarchy "data_ctrl:data_ctrl_inst|output_jpg:output_jpg_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 273
+Warning (10036): Verilog HDL or VHDL warning at output_jpg.v(22): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v Line: 22
+Warning (10230): Verilog HDL assignment warning at output_jpg.v(23): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v Line: 23
+Warning (10230): Verilog HDL assignment warning at output_jpg.v(24): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v Line: 24
+Warning (10230): Verilog HDL assignment warning at output_jpg.v(25): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v Line: 25
+Warning (10230): Verilog HDL assignment warning at output_jpg.v(27): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v Line: 27
+Warning (10230): Verilog HDL assignment warning at output_jpg.v(28): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v Line: 28
+Warning (10230): Verilog HDL assignment warning at output_jpg.v(29): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v Line: 29
+Warning (10230): Verilog HDL assignment warning at output_jpg.v(41): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/output_jpg.v Line: 41
+Info (12128): Elaborating entity "wire_switch" for hierarchy "data_ctrl:data_ctrl_inst|wire_switch:wire_switch_inst" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/data_ctrl.v Line: 349
+Warning (10036): Verilog HDL or VHDL warning at wire_switch.v(90): object "s0" assigned a value but never read File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 90
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(92): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 92
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(93): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 93
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(94): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 94
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(95): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 95
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(96): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 96
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(97): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 97
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(98): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 98
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(99): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 99
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(100): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 100
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(101): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 101
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(102): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 102
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(104): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 104
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(108): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 108
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(109): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 109
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(110): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 110
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(111): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 111
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(112): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 112
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(116): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 116
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(121): truncated value with size 32 to match size of target (1) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 121
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(122): truncated value with size 32 to match size of target (16) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 122
+Warning (10230): Verilog HDL assignment warning at wire_switch.v(146): truncated value with size 96 to match size of target (64) File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 146
+Warning (10034): Output port "_done[15..9]" at wire_switch.v(5) has no driver File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 5
+Warning (10034): Output port "_done[6..4]" at wire_switch.v(5) has no driver File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 5
+Warning (10034): Output port "_done[1..0]" at wire_switch.v(5) has no driver File: F:/intelFPGA/signal2/face_blur/verilog/lab3/wire_switch.v Line: 5
+Info (12128): Elaborating entity "ram1" for hierarchy "ram1:u1" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/face_blur.v Line: 70
+Info (12128): Elaborating entity "altsyncram" for hierarchy "ram1:u1|altsyncram:altsyncram_component" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/ram1.v Line: 86
+Info (12130): Elaborated megafunction instantiation "ram1:u1|altsyncram:altsyncram_component" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/ram1.v Line: 86
+Info (12133): Instantiated megafunction "ram1:u1|altsyncram:altsyncram_component" with the following parameter: File: F:/intelFPGA/signal2/face_blur/verilog/lab3/ram1.v Line: 86
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "65536"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "16"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_skf1.tdf
+    Info (12023): Found entity 1: altsyncram_skf1 File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/altsyncram_skf1.tdf Line: 34
+Info (12128): Elaborating entity "altsyncram_skf1" for hierarchy "ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated" File: f:/intelfpga/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_rsa.tdf
+    Info (12023): Found entity 1: decode_rsa File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/decode_rsa.tdf Line: 23
+Info (12128): Elaborating entity "decode_rsa" for hierarchy "ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_rsa:decode3" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/altsyncram_skf1.tdf Line: 45
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_k8a.tdf
+    Info (12023): Found entity 1: decode_k8a File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/decode_k8a.tdf Line: 23
+Info (12128): Elaborating entity "decode_k8a" for hierarchy "ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|decode_k8a:rden_decode" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/altsyncram_skf1.tdf Line: 46
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_qob.tdf
+    Info (12023): Found entity 1: mux_qob File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/mux_qob.tdf Line: 23
+Info (12128): Elaborating entity "mux_qob" for hierarchy "ram1:u1|altsyncram:altsyncram_component|altsyncram_skf1:auto_generated|mux_qob:mux2" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/altsyncram_skf1.tdf Line: 47
+Info (278001): Inferred 6 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "data_ctrl:data_ctrl_inst|blur:b0|Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 33
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "data_ctrl:data_ctrl_inst|result:result_inst|Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 44
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|Div0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 38
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "data_ctrl:data_ctrl_inst|read_data:read_data_inst|Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 41
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 40
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "data_ctrl:data_ctrl_inst|covAB:covAB_inst|Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 39
+Info (12130): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 33
+Info (12133): Instantiated megafunction "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0" with the following parameter: File: F:/intelFPGA/signal2/face_blur/verilog/lab3/blur.v Line: 33
+    Info (12134): Parameter "LPM_WIDTHA" = "10"
+    Info (12134): Parameter "LPM_WIDTHB" = "8"
+    Info (12134): Parameter "LPM_WIDTHP" = "18"
+    Info (12134): Parameter "LPM_WIDTHR" = "18"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12131): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core", which is child of megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0" File: f:/intelfpga/17.0/quartus/libraries/megafunctions/lpm_mult.tdf Line: 309
+Info (12131): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0" File: f:/intelfpga/17.0/quartus/libraries/megafunctions/multcore.tdf Line: 229
+Info (12131): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0" File: f:/intelfpga/17.0/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_lgh.tdf
+    Info (12023): Found entity 1: add_sub_lgh File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/add_sub_lgh.tdf Line: 23
+Info (12131): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0" File: f:/intelfpga/17.0/quartus/libraries/megafunctions/mpar_add.tdf Line: 138
+Info (12131): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0" File: f:/intelfpga/17.0/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_pgh.tdf
+    Info (12023): Found entity 1: add_sub_pgh File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/add_sub_pgh.tdf Line: 23
+Info (12131): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "data_ctrl:data_ctrl_inst|blur:b0|lpm_mult:Mult0" File: f:/intelfpga/17.0/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
+Info (12130): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 44
+Info (12133): Instantiated megafunction "data_ctrl:data_ctrl_inst|result:result_inst|lpm_mult:Mult0" with the following parameter: File: F:/intelFPGA/signal2/face_blur/verilog/lab3/result.v Line: 44
+    Info (12134): Parameter "LPM_WIDTHA" = "16"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_7dt.tdf
+    Info (12023): Found entity 1: mult_7dt File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/mult_7dt.tdf Line: 29
+Info (12130): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|lpm_divide:Div0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 38
+Info (12133): Instantiated megafunction "data_ctrl:data_ctrl_inst|calcu_a:calcu_a_inst|lpm_divide:Div0" with the following parameter: File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_a.v Line: 38
+    Info (12134): Parameter "LPM_WIDTHN" = "24"
+    Info (12134): Parameter "LPM_WIDTHD" = "24"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_jkm.tdf
+    Info (12023): Found entity 1: lpm_divide_jkm File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/lpm_divide_jkm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bnh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_bnh File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/sign_div_unsign_bnh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_aaf.tdf
+    Info (12023): Found entity 1: alt_u_div_aaf File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/alt_u_div_aaf.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/add_sub_7pc.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/add_sub_8pc.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|read_data:read_data_inst|lpm_mult:Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 41
+Info (12133): Instantiated megafunction "data_ctrl:data_ctrl_inst|read_data:read_data_inst|lpm_mult:Mult0" with the following parameter: File: F:/intelFPGA/signal2/face_blur/verilog/lab3/read_data.v Line: 41
+    Info (12134): Parameter "LPM_WIDTHA" = "8"
+    Info (12134): Parameter "LPM_WIDTHB" = "8"
+    Info (12134): Parameter "LPM_WIDTHP" = "16"
+    Info (12134): Parameter "LPM_WIDTHR" = "16"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_aat.tdf
+    Info (12023): Found entity 1: mult_aat File: F:/intelFPGA/signal2/face_blur/verilog/lab3/db/mult_aat.tdf Line: 29
+Info (12130): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|lpm_mult:Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 40
+Info (12133): Instantiated megafunction "data_ctrl:data_ctrl_inst|calcu_b:calcu_b_inst|lpm_mult:Mult0" with the following parameter: File: F:/intelFPGA/signal2/face_blur/verilog/lab3/calcu_b.v Line: 40
+    Info (12134): Parameter "LPM_WIDTHA" = "16"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12130): Elaborated megafunction instantiation "data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0" File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 39
+Info (12133): Instantiated megafunction "data_ctrl:data_ctrl_inst|covAB:covAB_inst|lpm_mult:Mult0" with the following parameter: File: F:/intelFPGA/signal2/face_blur/verilog/lab3/covAB.v Line: 39
+    Info (12134): Parameter "LPM_WIDTHA" = "16"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 18 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file F:/intelFPGA/signal2/face_blur/verilog/lab3/output_files/face_blur.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 3100 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 27 input pins
+    Info (21059): Implemented 17 output pins
+    Info (21061): Implemented 2537 logic cells
+    Info (21064): Implemented 512 RAM segments
+    Info (21062): Implemented 7 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 109 warnings
+    Info: Peak virtual memory: 4799 megabytes
+    Info: Processing ended: Sat Jul 11 11:23:52 2020
+    Info: Elapsed time: 00:02:47
+    Info: Total CPU time (on all processors): 00:03:02
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in F:/intelFPGA/signal2/face_blur/verilog/lab3/output_files/face_blur.map.smsg.
+
+

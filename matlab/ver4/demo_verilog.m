@@ -18,7 +18,7 @@ mean_II = test(II);
 
 rt = 128; % 定点数，保护精度
 cov_Ip = mean_II -  mean_I .* mean_I; 
-a = (cov_Ip * rt) ./ (cov_Ip + 400) ;
+a = (cov_Ip * rt) ./ (cov_Ip + 800) ;
 b = (mean_I * rt) - a .* mean_I; 
  
 mean_a = test(a);
@@ -35,27 +35,26 @@ imshow([I0 I3]);
 function q = test(p)
 
 h = 300;    w = 210;
-
+r = 8;
+aaaa = 0
+max(max(p))
 for i = 1:h
     for j = 1:w
         aa((i-1)*w+j) = uint32(p(i,j));
     end
 end
 
-% fprintf('============');
-% max(aa)
-
 for i = 1:w*h
-    if(i>=8 && i<=w*h-8)
-        bb(i) = sum(aa(i-7:i+8));
+    if(i>=r && i<=w*h-r)
+        bb(i) = sum(aa(i-r+1:i+r));
     else
         bb(i) = 0;
     end
 end
 
 for i = 1:w*h
-    if(i>=8*w && i<=w*h-8*w)
-        aa(i) = sum(bb(i-7*w:w:i+8*w));
+    if(i>=r*w && i<=w*h-r*w)
+        aa(i) = sum(bb(i-(r-1)*w:w:i+r*w));
     else
         aa(i) = 0;
     end
@@ -63,11 +62,10 @@ end
 
 for i = 1:h
     for j = 1:w
-        q(i,j) = aa((i-1)*w+j)/256;
+        q(i,j) = aa((i-1)*w+j)/(r*r*4);
     end
 end
-
-% max(aa)
+max(max(q))
 
 end
 

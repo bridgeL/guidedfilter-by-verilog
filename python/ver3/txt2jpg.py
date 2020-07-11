@@ -10,17 +10,20 @@ with open('savedata.txt', 'r') as fd:
     for line in fd:
         if (lnum < h * w):
             i = (int(lnum / w)) % h
-            j = int(lnum % w)
+            j = (int(lnum % w)-2) % w
             c = line.strip('\n')
-            if c == 'xxxxxx':
+            if c == 'xxxx':
                 c = '0'
             img[i, j] = int(c, 16)
         lnum += 1
     fd.close()
 
+img0 = cv2.imread('img300x210.jpg', 0)
+
 cv2.imwrite("./output.jpg", img)
-cv2.namedWindow("Image")
-cv2.imshow("Image", img)
+cv2.imshow("Img1", img)
+cv2.imshow("Img0", img0)
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
